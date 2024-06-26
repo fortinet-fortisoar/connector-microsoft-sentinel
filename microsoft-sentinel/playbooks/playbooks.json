@@ -3,7 +3,7 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Microsoft Sentinel - 1.0.0",
+      "name": "Sample - Microsoft Sentinel - 1.0.1",
       "description": "Sample playbooks for \"Microsoft Sentinel\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
@@ -80,7 +80,7 @@
                   "additional_fields": "",
                   "threatIntelligenceTags": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "update_threat_intelligence_indicator",
                 "operationTitle": "Update Threat Intelligence Indicator",
@@ -175,7 +175,7 @@
                 "params": {
                   "watchlistAlias": "highValueAsset"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_watchlist",
                 "operationTitle": "Get Watchlist",
@@ -274,7 +274,7 @@
                   "$skipToken": "",
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_all_incident_relations",
                 "operationTitle": "Get All Incident Relations",
@@ -347,7 +347,7 @@
                   "$skipToken": "",
                   "created_datetime": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_incident_list",
                 "operationTitle": "Get Incident List",
@@ -447,7 +447,7 @@
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "Description": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "update_incident",
                 "operationTitle": "Update Incident",
@@ -570,7 +570,7 @@
                 "params": {
                   "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "delete_threat_intelligence_indicator",
                 "operationTitle": "Delete Threat Intelligence Indicator",
@@ -647,7 +647,7 @@
                   "additional_fields": "",
                   "threatIntelligenceTags": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "create_threat_intelligence_indicator",
                 "operationTitle": "Create Threat Intelligence Indicator",
@@ -742,7 +742,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_alert_list",
                 "operationTitle": "Get Incident Alert List",
@@ -838,7 +838,7 @@
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_incident_relations",
                 "operationTitle": "Get Incident Relation",
@@ -965,7 +965,7 @@
                   "$skipToken": "",
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_all_incident_comments",
                 "operationTitle": "Get All Incident Comments",
@@ -1034,7 +1034,7 @@
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "update_incident_comment",
                 "operationTitle": "Update Incident Comment",
@@ -1226,7 +1226,7 @@
                   "$skipToken": "",
                   "created_datetime": "{{vars.last_pull_time}}"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_incident_list",
                 "operationTitle": "Get Incident List",
@@ -1364,7 +1364,7 @@
                   "itemsSearchKey": "Header",
                   "custom_attributes": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "create_watchlist",
                 "operationTitle": "Create Watchlist",
@@ -1462,7 +1462,7 @@
                   "watchlistAlias": "highValueAsset",
                   "custom_attributes": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "create_watchlist_item",
                 "operationTitle": "Create Watchlist Item",
@@ -1530,7 +1530,7 @@
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "delete_incident_relation",
                 "operationTitle": "Delete Incident Relation",
@@ -1654,7 +1654,7 @@
                   "message": "Please provide entity id.",
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "create_incident_comment",
                 "operationTitle": "Create Incident Comment",
@@ -1728,7 +1728,7 @@
                   "watchlistAlias": "highValueAsset",
                   "custom_attributes": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "update_watchlist",
                 "operationTitle": "Update Watchlist",
@@ -1827,7 +1827,7 @@
                   "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797",
                   "custom_attributes": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "update_watchlist_item",
                 "operationTitle": "Update Watchlist Item",
@@ -1951,7 +1951,7 @@
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_incident_comment",
                 "operationTitle": "Get Incident Comment",
@@ -2049,7 +2049,7 @@
                   "$orderby": "",
                   "$skipToken": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_all_threat_intelligence_indicators",
                 "operationTitle": "Get All Threat Intelligence Indicators",
@@ -2145,7 +2145,7 @@
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "delete_incident_comment",
                 "operationTitle": "Delete Incident Comment",
@@ -2241,7 +2241,7 @@
                   "watchlistAlias": "highValueAsset",
                   "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_watchlist_item",
                 "operationTitle": "Get Watchlist Item",
@@ -2308,7 +2308,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_bookmarks_list",
                 "operationTitle": "Get Incident Bookmarks List",
@@ -2560,7 +2560,7 @@
                 "params": {
                   "relationName": "highValueAsset"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "delete_watchlist",
                 "operationTitle": "Delete Watchlist",
@@ -2683,7 +2683,7 @@
                 "params": {
                   "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_threat_intelligence_indicator",
                 "operationTitle": "Get Threat Intelligence Indicator",
@@ -2750,7 +2750,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_incident",
                 "operationTitle": "Get Incident Details",
@@ -2846,7 +2846,7 @@
                   "$skipToken": "",
                   "watchlistAlias": "highValueAsset"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_all_watchlist_items",
                 "operationTitle": "Get All Watchlist Items",
@@ -2978,7 +2978,7 @@
                 "params": {
                   "incidentId": "{{vars.input.params.incidentdata.name}}"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_alert_list",
                 "operationTitle": "Get Incident Alert List",
@@ -3101,7 +3101,7 @@
                   "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
                   "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "update_incident_relations",
                 "operationTitle": "Update Incident Relations",
@@ -3226,7 +3226,7 @@
                   "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
                   "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "create_incident_relations",
                 "operationTitle": "Create Incident Relations",
@@ -3321,7 +3321,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_entities_list",
                 "operationTitle": "Get Incident Entities List",
@@ -3389,7 +3389,7 @@
                   "watchlistAlias": "highValueAsset",
                   "watchlistItemId": "82ba292c-dc97-4dfc-969d-d4dd9e666842"
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "delete_watchlist_item",
                 "operationTitle": "Delete Watchlist Item",
@@ -3512,7 +3512,7 @@
                 "params": {
                   "$skipToken": ""
                 },
-                "version": "1.0.0",
+                "version": "1.0.1",
                 "connector": "microsoft-sentinel",
                 "operation": "get_all_watchlist",
                 "operationTitle": "Get All Watchlist",

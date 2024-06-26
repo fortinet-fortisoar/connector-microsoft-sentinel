@@ -1,8 +1,9 @@
-""" Copyright start
-  Copyright (C) 2008 - 2023 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
-  Copyright end """
+"""
+Copyright start
+MIT License
+Copyright (c) 2024 Fortinet Inc
+Copyright end
+"""
 
 from connectors.core.connector import get_logger, ConnectorError
 import requests
@@ -200,6 +201,13 @@ def get_incident(config, params, connector_info):
 
 
 def update_incident(config, params, connector_info):
+    incident_id = {'incidentId': params.get('incidentId')}
+    incident_details = get_incident(config, incident_id, connector_info)
+    old_labels = incident_details.get('properties').get('labels')
+    new_labels = params.get('labels').split(",") if params.get('labels') else ''
+    if new_labels:
+        for label in new_labels:
+            old_labels.append({'labelName': label})
     url = INCIDENT_API + "/{3}?api-version=2022-11-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     payload = {
@@ -211,7 +219,8 @@ def update_incident(config, params, connector_info):
             'classification': params.get('classification'),
             'classificationComment': params.get('Comment'),
             'classificationReason': params.get('reason'),
-            'status': params.get('Status')
+            'status': params.get('Status'),
+            'labels': old_labels
         }
     }
     custom_attributes = params.get('custom_attributes')
