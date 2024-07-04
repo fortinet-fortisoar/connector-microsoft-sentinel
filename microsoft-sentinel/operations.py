@@ -211,7 +211,6 @@ def update_incident(config, params, connector_info):
     url = INCIDENT_API + "/{3}?api-version=2022-11-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     payload = {
-        'etag': params.get('etag'),
         'properties': {
             'description': params.get('Description'),
             'title': params.get('Title'),
@@ -221,7 +220,8 @@ def update_incident(config, params, connector_info):
             'classificationReason': params.get('reason'),
             'status': params.get('Status'),
             'labels': old_labels
-        }
+        },
+        'etag': params.get('etag')
     }
     custom_attributes = params.get('custom_attributes')
     if custom_attributes:
