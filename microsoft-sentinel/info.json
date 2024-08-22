@@ -9,7 +9,7 @@
   "category": "Analytics and SIEM",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.1/microsoft-sentinel/924/microsoft-sentinel-v1-0-1",
   "ingestion_supported": true,
   "ingestion_modes": [
     "scheduled"
@@ -1151,12 +1151,13 @@
         },
         {
           "title": "Labels",
+          "tooltip": "(Optional) Specify a comma-separated list of incident labels to update in Microsoft Sentinel.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "labels",
-          "description": "(Optional) Specify the comma-separated list of incident labels that you want to update in Microsoft Sentinel."
+          "description": "(Optional) Specify a comma-separated list of incident labels to update in Microsoft Sentinel."
         },
         {
           "title": "ETag",
