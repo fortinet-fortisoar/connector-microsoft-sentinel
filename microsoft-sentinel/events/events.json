@@ -20,14 +20,7 @@
       "sort": [],
       "limit": 30,
       "logic": "AND",
-      "filters": [
-        {
-          "type": "string",
-          "field": "status",
-          "value": "Active",
-          "operator": "eq"
-        }
-      ]
+      "filters": []
     },
     "sample_data": [
       {
