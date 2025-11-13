@@ -41,7 +41,7 @@ def api_request(method, endpoint, connector_info, config, params=None, data=None
         raise ConnectorError(
             'The server did not send any data in the allotted amount of time')
     except requests.exceptions.ConnectionError:
-        raise ConnectorError('Invalid Credentials')
+        raise ConnectorError('Unable to connect to the server. Please check the URL or your network connection.')
     except Exception as err:
         raise ConnectorError(str(err))
 
