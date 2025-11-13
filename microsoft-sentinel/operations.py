@@ -41,7 +41,7 @@ def api_request(method, endpoint, connector_info, config, params=None, data=None
         raise ConnectorError(
             'The server did not send any data in the allotted amount of time')
     except requests.exceptions.ConnectionError:
-        raise ConnectorError('Unable to connect to the server. Please check the URL or your network connection.')
+        raise ConnectorError('Invalid Credentials')
     except Exception as err:
         raise ConnectorError(str(err))
 
@@ -132,14 +132,14 @@ def get_all_threat_intelligence_indicators(config, params, connector_info):
 
 
 def get_threat_intelligence_indicator(config, params, connector_info):
-    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2025-09-01"
+    url = THREAT_INDICATORS_API + f"/indicators/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('id'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_threat_intelligence_indicator(config, params, connector_info):
-    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2025-09-01"
+    url = THREAT_INDICATORS_API + f"/indicators/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('id'))
     payload = threat_indicator_payload(params)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
@@ -147,7 +147,7 @@ def update_threat_intelligence_indicator(config, params, connector_info):
 
 
 def delete_threat_intelligence_indicator(config, params, connector_info):
-    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2025-09-01"
+    url = THREAT_INDICATORS_API + f"/indicators/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('id'))
     response = api_request("DELETE", endpoint, connector_info, config, params={})
     if response.get('message'):
@@ -194,7 +194,7 @@ def get_incident_list(config, params, connector_info):
 
 
 def get_incident(config, params, connector_info):
-    url = INCIDENT_API + "/{3}?api-version=2025-09-01"
+    url = INCIDENT_API + f"/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
@@ -208,7 +208,7 @@ def update_incident(config, params, connector_info):
     if new_labels:
         for label in new_labels:
             old_labels.append({'labelName': label})
-    url = INCIDENT_API + "/{3}?api-version=2025-09-01"
+    url = INCIDENT_API + f"/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     payload = {
         'properties': {
@@ -232,21 +232,21 @@ def update_incident(config, params, connector_info):
 
 
 def get_alert_list(config, params, connector_info):
-    url = INCIDENT_API + "/{3}/alerts?api-version=2025-09-01"
+    url = INCIDENT_API + f"/{{3}}/alerts?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response
 
 
 def get_entities_list(config, params, connector_info):
-    url = INCIDENT_API + "/{3}/entities?api-version=2025-09-01"
+    url = INCIDENT_API + f"/{{3}}/entities?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response
 
 
 def get_bookmarks_list(config, params, connector_info):
-    url = INCIDENT_API + "/{3}/bookmarks?api-version=2025-09-01"
+    url = INCIDENT_API + f"/{{3}}/bookmarks?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response
@@ -383,7 +383,7 @@ def delete_incident_comment(config, params, connector_info):
 
 
 def create_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "/{3}?api-version=2025-09-01"
+    url = WATCHLIST_API + f"/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     payload = {
         'etag': params.get('etag'),
@@ -418,14 +418,14 @@ def get_all_watchlist(config, params, connector_info):
 
 
 def get_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "/{3}?api-version=2025-09-01"
+    url = WATCHLIST_API + f"/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "/{3}?api-version=2025-09-01"
+    url = WATCHLIST_API + f"/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     payload = {
         'etag': params.get('etag'),
@@ -446,7 +446,7 @@ def update_watchlist(config, params, connector_info):
 
 
 def delete_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "/{3}?api-version=2025-09-01"
+    url = WATCHLIST_API + f"/{{3}}?api-version={API_VERSION}"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
     if response.get('message'):
