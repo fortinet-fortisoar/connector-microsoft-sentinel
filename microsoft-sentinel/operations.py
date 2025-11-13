@@ -1,7 +1,7 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2024 Fortinet Inc
+Copyright (c) 2025 Fortinet Inc
 Copyright end
 """
 
@@ -105,7 +105,7 @@ def threat_indicator_payload(params):
 
 
 def create_threat_intelligence_indicator(config, params, connector_info):
-    url = THREAT_INDICATORS_API + "/createIndicator?api-version=2022-11-01"
+    url = THREAT_INDICATORS_API + "/createIndicator?api-version={0}".format(API_VERSION)
     endpoint = create_endpoint(config, url)
     payload = threat_indicator_payload(params)
     response = api_request("POST", endpoint, connector_info, config, json=payload)
@@ -113,7 +113,7 @@ def create_threat_intelligence_indicator(config, params, connector_info):
 
 
 def get_all_threat_intelligence_indicators(config, params, connector_info):
-    url = THREAT_INDICATORS_API + "/indicators?api-version=2022-11-01"
+    url = THREAT_INDICATORS_API + "/indicators?api-version={0}".format(API_VERSION)
     endpoint = create_endpoint(config, url)
     filter = params.get('$filter')
     orderby = params.get('$orderby')
@@ -132,14 +132,14 @@ def get_all_threat_intelligence_indicators(config, params, connector_info):
 
 
 def get_threat_intelligence_indicator(config, params, connector_info):
-    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2022-11-01"
+    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('id'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_threat_intelligence_indicator(config, params, connector_info):
-    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2022-11-01"
+    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('id'))
     payload = threat_indicator_payload(params)
     response = api_request("PUT", endpoint, connector_info, config, json=payload)
@@ -147,7 +147,7 @@ def update_threat_intelligence_indicator(config, params, connector_info):
 
 
 def delete_threat_intelligence_indicator(config, params, connector_info):
-    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2022-11-01"
+    url = THREAT_INDICATORS_API + "/indicators/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('id'))
     response = api_request("DELETE", endpoint, connector_info, config, params={})
     if response.get('message'):
@@ -158,7 +158,7 @@ def delete_threat_intelligence_indicator(config, params, connector_info):
 
 def get_incident_list(config, params, connector_info):
     filter_list = []
-    url = INCIDENT_API + "?api-version=2022-11-01"
+    url = INCIDENT_API + "?api-version={0}".format(API_VERSION)
     endpoint = create_endpoint(config, url)
     date_time = params.get('created_datetime')
     filter = params.get('$filter')
@@ -194,7 +194,7 @@ def get_incident_list(config, params, connector_info):
 
 
 def get_incident(config, params, connector_info):
-    url = INCIDENT_API + "/{3}?api-version=2022-11-01"
+    url = INCIDENT_API + "/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
@@ -208,7 +208,7 @@ def update_incident(config, params, connector_info):
     if new_labels:
         for label in new_labels:
             old_labels.append({'labelName': label})
-    url = INCIDENT_API + "/{3}?api-version=2022-11-01"
+    url = INCIDENT_API + "/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     payload = {
         'properties': {
@@ -232,21 +232,21 @@ def update_incident(config, params, connector_info):
 
 
 def get_alert_list(config, params, connector_info):
-    url = INCIDENT_API + "/{3}/alerts?api-version=2022-11-01"
+    url = INCIDENT_API + "/{3}/alerts?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response
 
 
 def get_entities_list(config, params, connector_info):
-    url = INCIDENT_API + "/{3}/entities?api-version=2022-11-01"
+    url = INCIDENT_API + "/{3}/entities?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response
 
 
 def get_bookmarks_list(config, params, connector_info):
-    url = INCIDENT_API + "/{3}/bookmarks?api-version=2022-11-01"
+    url = INCIDENT_API + "/{3}/bookmarks?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     response = api_request("POST", endpoint, connector_info, config, json={})
     return response
@@ -254,8 +254,8 @@ def get_bookmarks_list(config, params, connector_info):
 
 def create_incident_relations(config, params, connector_info):
     endpoint = create_endpoint(config, INCIDENT_RELATION_API,
-                               id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
-        params.get('relationName'))
+                               id=params.get('incidentId')) + "/{0}?api-version={1}".format(
+        params.get('relationName'), API_VERSION)
     payload = {
         'properties': {
             'relatedResourceId': params.get('resourceId')
@@ -266,7 +266,7 @@ def create_incident_relations(config, params, connector_info):
 
 
 def get_all_incident_relations(config, params, connector_info):
-    url = INCIDENT_RELATION_API + "?api-version=2022-11-01"
+    url = INCIDENT_RELATION_API + "?api-version={0}".format(API_VERSION)
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     filter = params.get('$filter')
     orderby = params.get('$orderby')
@@ -286,16 +286,16 @@ def get_all_incident_relations(config, params, connector_info):
 
 def get_incident_relations(config, params, connector_info):
     endpoint = create_endpoint(config, INCIDENT_RELATION_API,
-                               id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
-        params.get('relationName'))
+                               id=params.get('incidentId')) + "/{0}?api-version={1}".format(
+        params.get('relationName'), API_VERSION)
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_incident_relations(config, params, connector_info):
     endpoint = create_endpoint(config, INCIDENT_RELATION_API,
-                               id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
-        params.get('relationName'))
+                               id=params.get('incidentId')) + "/{0}?api-version={1}".format(
+        params.get('relationName'), API_VERSION)
     payload = {
         'properties': {
             'relatedResourceId': params.get('resourceId')
@@ -307,8 +307,8 @@ def update_incident_relations(config, params, connector_info):
 
 def delete_incident_relation(config, params, connector_info):
     endpoint = create_endpoint(config, INCIDENT_RELATION_API,
-                               id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
-        params.get('relationName'))
+                               id=params.get('incidentId')) + "/{0}?api-version={1}".format(
+        params.get('relationName'), API_VERSION)
     response = api_request("DELETE", endpoint, connector_info, config, json={})
     if response.get('message'):
         return response
@@ -319,8 +319,8 @@ def delete_incident_relation(config, params, connector_info):
 
 def create_incident_comment(config, params, connector_info):
     endpoint = create_endpoint(config, INCIDENT_COMMENT_API,
-                               id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
-        str(random.getrandbits(128)))
+                               id=params.get('incidentId')) + "/{0}?api-version={1}".format(
+        str(random.getrandbits(128)), API_VERSION)
     payload = {
         'properties': {
             'message': params.get('message')
@@ -331,7 +331,7 @@ def create_incident_comment(config, params, connector_info):
 
 
 def get_all_incident_comments(config, params, connector_info):
-    url = INCIDENT_COMMENT_API + "?api-version=2022-11-01"
+    url = INCIDENT_COMMENT_API + "?api-version={0}".format(API_VERSION)
     endpoint = create_endpoint(config, url, id=params.get('incidentId'))
     filter = params.get('$filter')
     orderby = params.get('$orderby')
@@ -351,16 +351,16 @@ def get_all_incident_comments(config, params, connector_info):
 
 def get_incident_comment(config, params, connector_info):
     endpoint = create_endpoint(config, INCIDENT_COMMENT_API,
-                               id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
-        params.get('incidentcommentId'))
+                               id=params.get('incidentId')) + "/{0}?api-version={1}".format(
+        params.get('incidentcommentId'), API_VERSION)
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_incident_comment(config, params, connector_info):
     endpoint = create_endpoint(config, INCIDENT_COMMENT_API,
-                               id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
-        params.get('incidentcommentId'))
+                               id=params.get('incidentId')) + "/{0}?api-version={1}".format(
+        params.get('incidentcommentId'), API_VERSION)
     payload = {
         'properties': {
             'message': params.get('message')
@@ -372,8 +372,8 @@ def update_incident_comment(config, params, connector_info):
 
 def delete_incident_comment(config, params, connector_info):
     endpoint = create_endpoint(config, INCIDENT_COMMENT_API,
-                               id=params.get('incidentId')) + "/{0}?api-version=2022-11-01".format(
-        params.get('incidentcommentId'))
+                               id=params.get('incidentId')) + "/{0}?api-version={1}".format(
+        params.get('incidentcommentId'), API_VERSION)
     response = api_request("DELETE", endpoint, connector_info, config, json={})
     if response.get('message'):
         return response
@@ -383,7 +383,7 @@ def delete_incident_comment(config, params, connector_info):
 
 
 def create_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
+    url = WATCHLIST_API + "/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     payload = {
         'etag': params.get('etag'),
@@ -404,7 +404,7 @@ def create_watchlist(config, params, connector_info):
 
 
 def get_all_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "?api-version=2022-11-01"
+    url = WATCHLIST_API + "?api-version={0}".format(API_VERSION)
     endpoint = create_endpoint(config, url)
     skip_token = params.get('$skipToken')
     if skip_token:
@@ -418,14 +418,14 @@ def get_all_watchlist(config, params, connector_info):
 
 
 def get_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
+    url = WATCHLIST_API + "/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
+    url = WATCHLIST_API + "/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     payload = {
         'etag': params.get('etag'),
@@ -446,7 +446,7 @@ def update_watchlist(config, params, connector_info):
 
 
 def delete_watchlist(config, params, connector_info):
-    url = WATCHLIST_API + "/{3}?api-version=2022-11-01"
+    url = WATCHLIST_API + "/{3}?api-version=2025-09-01"
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     response = api_request("DELETE", endpoint, connector_info, config, json={})
     if response.get('message'):
@@ -458,8 +458,8 @@ def delete_watchlist(config, params, connector_info):
 
 def create_watchlist_item(config, params, connector_info):
     endpoint = create_endpoint(config, WATCHLIST_ITEM_API,
-                               id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
-        uuid.uuid4())
+                               id=params.get('watchlistAlias')) + "/{0}?api-version={1}".format(
+        uuid.uuid4(), API_VERSION)
     payload = {
         'etag': params.get('etag'),
         'properties': {
@@ -475,7 +475,7 @@ def create_watchlist_item(config, params, connector_info):
 
 
 def get_all_watchlist_items(config, params, connector_info):
-    url = WATCHLIST_ITEM_API + "?api-version=2022-11-01"
+    url = WATCHLIST_ITEM_API + "?api-version={0}".format(API_VERSION)
     endpoint = create_endpoint(config, url, id=params.get('watchlistAlias'))
     skip_token = params.get('$skipToken')
     if skip_token:
@@ -490,16 +490,16 @@ def get_all_watchlist_items(config, params, connector_info):
 
 def get_watchlist_item(config, params, connector_info):
     endpoint = create_endpoint(config, WATCHLIST_ITEM_API,
-                               id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
-        params.get('watchlistItemId'))
+                               id=params.get('watchlistAlias')) + "/{0}?api-version={1}".format(
+        params.get('watchlistItemId'), API_VERSION)
     response = api_request("GET", endpoint, connector_info, config, params={})
     return response
 
 
 def update_watchlist_item(config, params, connector_info):
     endpoint = create_endpoint(config, WATCHLIST_ITEM_API,
-                               id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
-        params.get('watchlistItemId'))
+                               id=params.get('watchlistAlias')) + "/{0}?api-version={1}".format(
+        params.get('watchlistItemId'), API_VERSION)
     payload = {
         'etag': params.get('etag'),
         'properties': {
@@ -516,8 +516,8 @@ def update_watchlist_item(config, params, connector_info):
 
 def delete_watchlist_item(config, params, connector_info):
     endpoint = create_endpoint(config, WATCHLIST_ITEM_API,
-                               id=params.get('watchlistAlias')) + "/{0}?api-version=2022-11-01".format(
-        params.get('watchlistItemId'))
+                               id=params.get('watchlistAlias')) + "/{0}?api-version={1}".format(
+        params.get('watchlistItemId'), API_VERSION)
     response = api_request("DELETE", endpoint, connector_info, config, json={})
     if response.get('message'):
         return response

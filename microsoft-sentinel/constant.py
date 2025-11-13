@@ -1,11 +1,15 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2024 Fortinet Inc
+Copyright (c) 2025 Fortinet Inc
 Copyright end
 """
 
 REFRESH_TOKEN_FLAG = False
+
+# API Version
+
+API_VERSION = "2025-09-01"
 
 # redirect url
 DEFAULT_REDIRECT_URL = 'https://localhost/myapp'

@@ -3,15 +3,18 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Microsoft Sentinel - 1.0.1",
+      "name": "Sample - Microsoft Sentinel - 1.1.0",
       "description": "Sample playbooks for \"Microsoft Sentinel\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
       "uuid": "8589641d-44c6-4319-b1ee-46d286522fe3",
-      "id": 323,
+      "id": 401,
       "deletedAt": null,
       "importedBy": [],
-      "recordTags": [],
+      "recordTags": [
+        "Microsoft",
+        "microsoft-sentinel"
+      ],
       "workflows": [
         {
           "@type": "Workflow",
@@ -80,7 +83,7 @@
                   "additional_fields": "",
                   "threatIntelligenceTags": ""
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "update_threat_intelligence_indicator",
                 "operationTitle": "Update Threat Intelligence Indicator",
@@ -103,13 +106,16 @@
               "sourceStep": "/api/3/workflow_steps/2f10bc55-036f-44a9-9395-ad1602e667be",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "fded3739-3628-4c1e-9079-9c8f94f15d5b"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "21d735d8-0d07-4df6-9add-66cfcae2ce26",
-          "id": 4501,
+          "id": 5769,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -139,6 +145,30 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "watchlistAlias": "highValueAsset"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_watchlist",
+                "operationTitle": "Get Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a7561092-f4b2-4624-82c8-32b7222eea82"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -164,30 +194,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "1a38e5a9-78de-4a6d-bf44-ae44d4a89a43"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Watchlist",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "watchlistAlias": "highValueAsset"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_watchlist",
-                "operationTitle": "Get Watchlist",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "a7561092-f4b2-4624-82c8-32b7222eea82"
             }
           ],
           "routes": [
@@ -198,13 +204,16 @@
               "sourceStep": "/api/3/workflow_steps/1a38e5a9-78de-4a6d-bf44-ae44d4a89a43",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "0e9d6ac5-f6f8-4348-ad6c-46bbc2642392"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "38c7fcb0-16a2-4ae9-b10b-b38d93cae0dc",
-          "id": 4502,
+          "id": 5770,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -234,6 +243,34 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get All Incident Relations",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "",
+                  "$filter": "",
+                  "$orderby": "",
+                  "$skipToken": "",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_incident_relations",
+                "operationTitle": "Get All Incident Relations",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "44072ece-0382-4566-82fb-df09f84e7213"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -259,34 +296,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "02d04e17-d3f2-4c9d-820e-f8cb00b69256"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get All Incident Relations",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$orderby": "",
-                  "$skipToken": "",
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_all_incident_relations",
-                "operationTitle": "Get All Incident Relations",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "44072ece-0382-4566-82fb-df09f84e7213"
             }
           ],
           "routes": [
@@ -297,13 +306,16 @@
               "sourceStep": "/api/3/workflow_steps/02d04e17-d3f2-4c9d-820e-f8cb00b69256",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "b1bb5a3b-3ad2-49ba-ba2f-4b7ce4558934"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "3b9b5b99-67db-4509-857a-582dcc022603",
-          "id": 4503,
+          "id": 5771,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -347,7 +359,7 @@
                   "$skipToken": "",
                   "created_datetime": ""
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "get_incident_list",
                 "operationTitle": "Get Incident List",
@@ -398,13 +410,16 @@
               "sourceStep": "/api/3/workflow_steps/d92d5fbe-6df9-4ab4-8666-aa69ef824ba5",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "77eb0294-4697-4f2f-aaa2-d3ee88a01b85"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "3c603956-4cbf-45d1-83d1-ec05537b68f6",
-          "id": 4504,
+          "id": 5772,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -434,35 +449,6 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Update Incident",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "etag": "",
-                  "Title": "New Incident",
-                  "Status": "Active",
-                  "Severity": "Low",
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "Description": ""
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "update_incident",
-                "operationTitle": "Update Incident",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "8fe376cf-ca94-45fe-934f-96b8a5d17694"
-            },
-            {
-              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -488,6 +474,35 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "d78061d1-b5f4-4f17-bceb-f0585fd17bff"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Incident",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "Title": "New Incident",
+                  "Status": "Active",
+                  "Severity": "Low",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "Description": ""
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_incident",
+                "operationTitle": "Update Incident",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8fe376cf-ca94-45fe-934f-96b8a5d17694"
             }
           ],
           "routes": [
@@ -498,13 +513,16 @@
               "sourceStep": "/api/3/workflow_steps/d78061d1-b5f4-4f17-bceb-f0585fd17bff",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "22885c30-2d89-4329-8a78-ba5c939f5abf"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "3e2944e6-4fec-4cff-9044-09b29d9aea5f",
-          "id": 4505,
+          "id": 5773,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -534,6 +552,30 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Delete Threat Intelligence Indicator",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "delete_threat_intelligence_indicator",
+                "operationTitle": "Delete Threat Intelligence Indicator",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8a40fdac-2f03-4c5c-b581-0b6a05c0ad34"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -559,30 +601,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "5c2ad680-ea3e-4354-a0dc-6fc407842594"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Delete Threat Intelligence Indicator",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "delete_threat_intelligence_indicator",
-                "operationTitle": "Delete Threat Intelligence Indicator",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "8a40fdac-2f03-4c5c-b581-0b6a05c0ad34"
             }
           ],
           "routes": [
@@ -593,13 +611,16 @@
               "sourceStep": "/api/3/workflow_steps/5c2ad680-ea3e-4354-a0dc-6fc407842594",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "8464a79c-0075-4a93-a401-69bd1e7ee221"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "422da236-ecb8-4b6e-946f-50514a1add02",
-          "id": 4506,
+          "id": 5774,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -647,7 +668,7 @@
                   "additional_fields": "",
                   "threatIntelligenceTags": ""
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "create_threat_intelligence_indicator",
                 "operationTitle": "Create Threat Intelligence Indicator",
@@ -698,13 +719,16 @@
               "sourceStep": "/api/3/workflow_steps/df64d5cd-05cd-4498-8a28-0370b5fc7db2",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "28f6d8bc-6d43-4586-b83e-9e061e503c8f"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "5bf4eeeb-b76a-491b-8ad7-a206829c4fa6",
-          "id": 4507,
+          "id": 5775,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -742,7 +766,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "get_alert_list",
                 "operationTitle": "Get Incident Alert List",
@@ -793,13 +817,16 @@
               "sourceStep": "/api/3/workflow_steps/f7fa59fd-881f-4ac7-b90b-dee778c45c1c",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "8a6681a9-d1c1-4d48-9d57-1d0fa9689b13"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "5ef2c493-fc19-4485-997a-3d421e76b1f6",
-          "id": 4508,
+          "id": 5776,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -838,7 +865,7 @@
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "get_incident_relations",
                 "operationTitle": "Get Incident Relation",
@@ -889,13 +916,16 @@
               "sourceStep": "/api/3/workflow_steps/3f7ef624-f9b8-4537-8903-c6f6c9292225",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "d3cae834-90cb-4453-a407-6bb51c850c68"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "6f68b530-8200-49f5-ba6a-cf5cbba523ab",
-          "id": 4509,
+          "id": 5777,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -925,6 +955,34 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get All Incident Comments",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "",
+                  "$filter": "",
+                  "$orderby": "",
+                  "$skipToken": "",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_incident_comments",
+                "operationTitle": "Get All Incident Comments",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ac12de3b-94c5-499f-b534-a4dfcba26d25"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -950,34 +1008,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "6f48da8d-2bc1-4b8b-84b7-4de4b58363b4"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get All Incident Comments",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$orderby": "",
-                  "$skipToken": "",
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_all_incident_comments",
-                "operationTitle": "Get All Incident Comments",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "ac12de3b-94c5-499f-b534-a4dfcba26d25"
             }
           ],
           "routes": [
@@ -988,13 +1018,16 @@
               "sourceStep": "/api/3/workflow_steps/6f48da8d-2bc1-4b8b-84b7-4de4b58363b4",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "9697a1ce-2a08-46da-9ac3-be99779988ff"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "70264404-fe02-4398-b083-e0a2862c5892",
-          "id": 4510,
+          "id": 5778,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1024,32 +1057,6 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Update Incident Comment",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "message": "Also, please provide bookmark id.",
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "update_incident_comment",
-                "operationTitle": "Update Incident Comment",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "53c2966e-6ddd-4a7b-9744-c71ef9039899"
-            },
-            {
-              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -1075,6 +1082,32 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "b496d7b4-f768-4aea-80fd-7d9ea2d1f4a5"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Incident Comment",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "message": "Also, please provide bookmark id.",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_incident_comment",
+                "operationTitle": "Update Incident Comment",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "53c2966e-6ddd-4a7b-9744-c71ef9039899"
             }
           ],
           "routes": [
@@ -1085,13 +1118,16 @@
               "sourceStep": "/api/3/workflow_steps/b496d7b4-f768-4aea-80fd-7d9ea2d1f4a5",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "c431675a-9857-41c5-b276-33c623620512"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "72d5fda3-8778-4044-96b5-7d4148ec6456",
-          "id": 4511,
+          "id": 5779,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1121,6 +1157,53 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Configuration",
+              "description": null,
+              "arguments": {
+                "top": "1000",
+                "Status": "New",
+                "Severity": "High",
+                "Pull_Sample_Events_in_Past_X_Minutes": "10"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "6218abef-42fa-4630-975d-a054681c3a50"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "{{vars.top}}",
+                  "Status": "{{vars.Status}}",
+                  "$filter": "",
+                  "$orderby": "",
+                  "Severity": "{{vars.Severity}}",
+                  "$skipToken": "",
+                  "created_datetime": "{{vars.last_pull_time}}"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_incident_list",
+                "operationTitle": "Get Incident List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "570",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d2b25fe4-aee6-4f66-9e60-0ded5b93686b"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Get Macro Value",
               "description": null,
               "arguments": {
@@ -1141,43 +1224,6 @@
               "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
               "group": null,
               "uuid": "2e0f7c52-b4eb-4478-b785-d896e722ad9d"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "step_variables": {
-                  "input": {
-                    "params": []
-                  },
-                  "_configuration_schema": "[\n  {\n    \"title\": \"Pull Incidents from Last X Minutes\",\n    \"name\": \"Pull_Sample_Events_in_Past_X_Minutes\",\n    \"type\": \"text\",\n    \"tooltip\": \"Fetch incidents from last X minutes. e.g 10\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 10\n  },\n  {\n    \"title\": \"Severity\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Severity\",\n    \"description\": \"(Optional) Specify a severity for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.\",\n    \"options\": [\n      \"High\",\n      \"Medium\",\n      \"Low\",\n      \"Informational\"\n    ]\n  },\n  {\n    \"title\": \"Status\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Status\",\n    \"description\": \"(Optional) Specify a status for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.\",\n    \"options\": [\n      \"Active\",\n      \"New\",\n      \"Closed\"\n    ]\n  },\n  {\n    \"title\": \"Number of Incidents to Fetch\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"integer\",\n    \"value\": 1000,\n    \"name\": \"top\",\n    \"description\": \"(Optional) Maximum number of incidents that this operation should return from Microsoft Sentinel.\",\n    \"tooltip\": \"Note: If field is not provided ,then it pull only 50 incidents.\"\n  }\n]",
-                  "MicrosoftSentinelLastIncidentPullTime": "MicrosoftSentinelLastIncidentPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}"
-                }
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-              "group": null,
-              "uuid": "3c8dd29e-e8c7-4fdc-95be-0248026b2f15"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Configuration",
-              "description": null,
-              "arguments": {
-                "top": "1000",
-                "Status": "New",
-                "Severity": "High",
-                "Pull_Sample_Events_in_Past_X_Minutes": "10"
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-              "group": null,
-              "uuid": "6218abef-42fa-4630-975d-a054681c3a50"
             },
             {
               "@type": "WorkflowStep",
@@ -1212,33 +1258,23 @@
             },
             {
               "@type": "WorkflowStep",
-              "name": "Get Incident List",
+              "name": "Start",
               "description": null,
               "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "$top": "{{vars.top}}",
-                  "Status": "{{vars.Status}}",
-                  "$filter": "",
-                  "$orderby": "",
-                  "Severity": "{{vars.Severity}}",
-                  "$skipToken": "",
-                  "created_datetime": "{{vars.last_pull_time}}"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_incident_list",
-                "operationTitle": "Get Incident List",
-                "pickFromTenant": false,
-                "step_variables": []
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  },
+                  "_configuration_schema": "[\n  {\n    \"title\": \"Pull Incidents from Last X Minutes\",\n    \"name\": \"Pull_Sample_Events_in_Past_X_Minutes\",\n    \"type\": \"text\",\n    \"tooltip\": \"Fetch incidents from last X minutes. e.g 10\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"value\": 10\n  },\n  {\n    \"title\": \"Severity\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Severity\",\n    \"description\": \"(Optional) Specify a severity for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Critical, High, Medium, Low, or Informational.\",\n    \"options\": [\n      \"High\",\n      \"Medium\",\n      \"Low\",\n      \"Informational\"\n    ]\n  },\n  {\n    \"title\": \"Status\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"select\",\n    \"name\": \"Status\",\n    \"description\": \"(Optional) Specify a status for the specific incident based on which you want to retrieve from Microsoft Sentinel. You can choose from the following options: Active, New, or Closed.\",\n    \"options\": [\n      \"Active\",\n      \"New\",\n      \"Closed\"\n    ]\n  },\n  {\n    \"title\": \"Number of Incidents to Fetch\",\n    \"required\": false,\n    \"editable\": true,\n    \"visible\": true,\n    \"type\": \"integer\",\n    \"value\": 1000,\n    \"name\": \"top\",\n    \"description\": \"(Optional) Maximum number of incidents that this operation should return from Microsoft Sentinel.\",\n    \"tooltip\": \"Note: If field is not provided ,then it pull only 50 incidents.\"\n  }\n]",
+                  "MicrosoftSentinelLastIncidentPullTime": "MicrosoftSentinelLastIncidentPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}"
+                }
               },
               "status": null,
-              "top": "570",
+              "top": "30",
               "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
               "group": null,
-              "uuid": "d2b25fe4-aee6-4f66-9e60-0ded5b93686b"
+              "uuid": "3c8dd29e-e8c7-4fdc-95be-0248026b2f15"
             }
           ],
           "routes": [
@@ -1249,34 +1285,8 @@
               "sourceStep": "/api/3/workflow_steps/6218abef-42fa-4630-975d-a054681c3a50",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "05c2b921-1f59-4f9d-95c9-a61698198c47"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Set Time Configuration -> Get Incident List1",
-              "targetStep": "/api/3/workflow_steps/d2b25fe4-aee6-4f66-9e60-0ded5b93686b",
-              "sourceStep": "/api/3/workflow_steps/c74d0632-c95a-427d-a2d9-edde4875f907",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "38cfecb0-3433-4649-875a-519d3abc4cc9"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Get Macro Value -> Set Time Configuration",
-              "targetStep": "/api/3/workflow_steps/c74d0632-c95a-427d-a2d9-edde4875f907",
-              "sourceStep": "/api/3/workflow_steps/2e0f7c52-b4eb-4478-b785-d896e722ad9d",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "622742e1-8d37-4983-b481-acd8d133dbb2"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Configuration",
-              "targetStep": "/api/3/workflow_steps/6218abef-42fa-4630-975d-a054681c3a50",
-              "sourceStep": "/api/3/workflow_steps/3c8dd29e-e8c7-4fdc-95be-0248026b2f15",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "66721ae3-814b-476b-b4c9-4752a8ba336d"
             },
             {
               "@type": "WorkflowRoute",
@@ -1285,13 +1295,46 @@
               "sourceStep": "/api/3/workflow_steps/d2b25fe4-aee6-4f66-9e60-0ded5b93686b",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "9090dfac-c035-47f6-8dc1-15bd646345f9"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Macro Value -> Set Time Configuration",
+              "targetStep": "/api/3/workflow_steps/c74d0632-c95a-427d-a2d9-edde4875f907",
+              "sourceStep": "/api/3/workflow_steps/2e0f7c52-b4eb-4478-b785-d896e722ad9d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "622742e1-8d37-4983-b481-acd8d133dbb2"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Set Time Configuration -> Get Incident List1",
+              "targetStep": "/api/3/workflow_steps/d2b25fe4-aee6-4f66-9e60-0ded5b93686b",
+              "sourceStep": "/api/3/workflow_steps/c74d0632-c95a-427d-a2d9-edde4875f907",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "38cfecb0-3433-4649-875a-519d3abc4cc9"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Configuration",
+              "targetStep": "/api/3/workflow_steps/6218abef-42fa-4630-975d-a054681c3a50",
+              "sourceStep": "/api/3/workflow_steps/3c8dd29e-e8c7-4fdc-95be-0248026b2f15",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "66721ae3-814b-476b-b4c9-4752a8ba336d"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "73f30444-db95-411c-ace9-dada9da16781",
-          "id": 4512,
+          "id": 5780,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1322,6 +1365,36 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Create Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "source": "Microsoft",
+                  "provider": "Local file",
+                  "description": "",
+                  "displayName": "High Value Assets Watchlist",
+                  "itemsSearchKey": "Header",
+                  "custom_attributes": ""
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_watchlist",
+                "operationTitle": "Create Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a1c3bbf3-3cdb-4fb6-94db-14afd109fef0"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -1347,36 +1420,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "78fac159-a29e-481e-919d-9eae6718d684"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Create Watchlist",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "etag": "",
-                  "source": "Microsoft",
-                  "provider": "Local file",
-                  "description": "",
-                  "displayName": "High Value Assets Watchlist",
-                  "itemsSearchKey": "Header",
-                  "custom_attributes": ""
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "create_watchlist",
-                "operationTitle": "Create Watchlist",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "a1c3bbf3-3cdb-4fb6-94db-14afd109fef0"
             }
           ],
           "routes": [
@@ -1387,13 +1430,16 @@
               "sourceStep": "/api/3/workflow_steps/78fac159-a29e-481e-919d-9eae6718d684",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "48ba2281-6df1-44d3-9f34-f23d6dd93d58"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "7b40607b-6269-4b46-9a74-2d5ee69a81f3",
-          "id": 4513,
+          "id": 5781,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1423,6 +1469,33 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Create Watchlist Item",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "itemsKeyValue": "{\n  \"Gateway subnet\": \"10.0.255.224/27\",\n  \"Web Tier\": \"10.0.1.0/24\",\n  \"Business tier\": \"10.0.2.0/24\",\n  \"Data tier\": \"10.0.2.0/24\",\n  \"Private DMZ in\": \"10.0.0.0/27\",\n  \"Public DMZ out\": \"10.0.0.96/27\"\n}",
+                  "watchlistAlias": "highValueAsset",
+                  "custom_attributes": ""
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_watchlist_item",
+                "operationTitle": "Create Watchlist Item",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "bfa20b68-727b-4e5a-b296-e04bd6520e7a"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -1448,33 +1521,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "9d4e6476-c290-426b-bea6-6102bd04b637"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Create Watchlist Item",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "etag": "",
-                  "itemsKeyValue": "{\n  \"Gateway subnet\": \"10.0.255.224/27\",\n  \"Web Tier\": \"10.0.1.0/24\",\n  \"Business tier\": \"10.0.2.0/24\",\n  \"Data tier\": \"10.0.2.0/24\",\n  \"Private DMZ in\": \"10.0.0.0/27\",\n  \"Public DMZ out\": \"10.0.0.96/27\"\n}",
-                  "watchlistAlias": "highValueAsset",
-                  "custom_attributes": ""
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "create_watchlist_item",
-                "operationTitle": "Create Watchlist Item",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "bfa20b68-727b-4e5a-b296-e04bd6520e7a"
             }
           ],
           "routes": [
@@ -1485,13 +1531,16 @@
               "sourceStep": "/api/3/workflow_steps/9d4e6476-c290-426b-bea6-6102bd04b637",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "a127e111-300d-4dd8-935d-9f20655a9fca"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "7cdb076a-3891-4c3d-8442-831401d9bcc5",
-          "id": 4514,
+          "id": 5782,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1530,7 +1579,7 @@
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
                   "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "delete_incident_relation",
                 "operationTitle": "Delete Incident Relation",
@@ -1581,13 +1630,16 @@
               "sourceStep": "/api/3/workflow_steps/fd1c4c9d-f1b2-42e1-9738-d130a4691503",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "1f36e903-9ab1-425d-b8c9-1282fa1b5f22"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "8195a3ca-f6dc-4ea0-a6ea-c97b4684c5b6",
-          "id": 4515,
+          "id": 5783,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1617,6 +1669,31 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Create Incident Comment",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "message": "Please provide entity id.",
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_incident_comment",
+                "operationTitle": "Create Incident Comment",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "f9d4836b-a01c-4056-bf39-b69d2983755f"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -1642,31 +1719,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "733dd832-78ac-4554-8507-50c57680faaa"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Create Incident Comment",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "message": "Please provide entity id.",
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "create_incident_comment",
-                "operationTitle": "Create Incident Comment",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "f9d4836b-a01c-4056-bf39-b69d2983755f"
             }
           ],
           "routes": [
@@ -1677,13 +1729,16 @@
               "sourceStep": "/api/3/workflow_steps/733dd832-78ac-4554-8507-50c57680faaa",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "72b965da-2850-45c1-8076-1f3b35a2ade0"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "9084d9e0-4e29-474d-a013-f5a321b68f28",
-          "id": 4516,
+          "id": 5784,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1713,37 +1768,6 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Update Watchlist",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "etag": "",
-                  "source": "Microsoft",
-                  "provider": "Local file",
-                  "description": "",
-                  "displayName": "High Value Assets Watchlist",
-                  "itemsSearchKey": "Header",
-                  "watchlistAlias": "highValueAsset",
-                  "custom_attributes": ""
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "update_watchlist",
-                "operationTitle": "Update Watchlist",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "4104a7ff-b196-4749-9001-e43efdc1c988"
-            },
-            {
-              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -1769,6 +1793,37 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "7700dfce-0729-44f8-9277-b9ff457750a4"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "source": "Microsoft",
+                  "provider": "Local file",
+                  "description": "",
+                  "displayName": "High Value Assets Watchlist",
+                  "itemsSearchKey": "Header",
+                  "watchlistAlias": "highValueAsset",
+                  "custom_attributes": ""
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_watchlist",
+                "operationTitle": "Update Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4104a7ff-b196-4749-9001-e43efdc1c988"
             }
           ],
           "routes": [
@@ -1779,13 +1834,16 @@
               "sourceStep": "/api/3/workflow_steps/7700dfce-0729-44f8-9277-b9ff457750a4",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "97202f5a-ffbb-4a2c-934a-303f7eb8712c"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "972e1925-802c-421b-9395-ad6b147857a7",
-          "id": 4517,
+          "id": 5785,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1815,34 +1873,6 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Update Watchlist Item",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "etag": "",
-                  "itemsKeyValue": "{\n  \"Gateway subnet\": \"10.0.255.224/27\",\n  \"Web Tier\": \"10.0.1.0/24\",\n  \"Business tier\": \"10.0.2.0/24\",\n  \"Data tier\": \"10.0.2.0/24\",\n  \"Private DMZ in\": \"10.0.0.0/27\",\n  \"Public DMZ out\": \"10.0.0.96/27\"\n}",
-                  "watchlistAlias": "highValueAsset",
-                  "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797",
-                  "custom_attributes": ""
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "update_watchlist_item",
-                "operationTitle": "Update Watchlist Item",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "20977bcd-2cf9-4d7e-9710-9dbf48b6d3e5"
-            },
-            {
-              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -1868,6 +1898,34 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "44f6a4f6-d106-4a32-89b5-22400a7a7e77"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Watchlist Item",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "etag": "",
+                  "itemsKeyValue": "{\n  \"Gateway subnet\": \"10.0.255.224/27\",\n  \"Web Tier\": \"10.0.1.0/24\",\n  \"Business tier\": \"10.0.2.0/24\",\n  \"Data tier\": \"10.0.2.0/24\",\n  \"Private DMZ in\": \"10.0.0.0/27\",\n  \"Public DMZ out\": \"10.0.0.96/27\"\n}",
+                  "watchlistAlias": "highValueAsset",
+                  "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797",
+                  "custom_attributes": ""
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_watchlist_item",
+                "operationTitle": "Update Watchlist Item",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "20977bcd-2cf9-4d7e-9710-9dbf48b6d3e5"
             }
           ],
           "routes": [
@@ -1878,13 +1936,16 @@
               "sourceStep": "/api/3/workflow_steps/44f6a4f6-d106-4a32-89b5-22400a7a7e77",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "f8b128de-95ca-4813-ba9b-0b702139d7f2"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "9cf9b558-561f-45dd-9c3c-61f61fad8a47",
-          "id": 4518,
+          "id": 5786,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1914,6 +1975,31 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get Incident Comment",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_incident_comment",
+                "operationTitle": "Get Incident Comment",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "3d41e6a7-6a26-4b04-963b-100855243726"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -1939,31 +2025,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "2ed40b27-96b7-4fec-87bb-c30852862acd"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Incident Comment",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_incident_comment",
-                "operationTitle": "Get Incident Comment",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "3d41e6a7-6a26-4b04-963b-100855243726"
             }
           ],
           "routes": [
@@ -1974,13 +2035,16 @@
               "sourceStep": "/api/3/workflow_steps/2ed40b27-96b7-4fec-87bb-c30852862acd",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "f1f13997-d151-4d09-beac-59818fb8d3c0"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "a2f75f28-2ed8-4b3b-837a-7bf198bae0c9",
-          "id": 4519,
+          "id": 5787,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2010,6 +2074,33 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get All Threat Intelligence Indicators",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$top": "",
+                  "$filter": "",
+                  "$orderby": "",
+                  "$skipToken": ""
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_threat_intelligence_indicators",
+                "operationTitle": "Get All Threat Intelligence Indicators",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "9dd62349-0f4a-49ae-a84e-18f3a354460c"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -2035,33 +2126,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "7fdb39fa-4f4b-4c5a-ae3c-01d7d81fee61"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get All Threat Intelligence Indicators",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$orderby": "",
-                  "$skipToken": ""
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_all_threat_intelligence_indicators",
-                "operationTitle": "Get All Threat Intelligence Indicators",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "9dd62349-0f4a-49ae-a84e-18f3a354460c"
             }
           ],
           "routes": [
@@ -2072,13 +2136,16 @@
               "sourceStep": "/api/3/workflow_steps/7fdb39fa-4f4b-4c5a-ae3c-01d7d81fee61",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "027da6d2-14be-4f56-906f-984ceedbebed"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "a478ffbe-4a0c-429f-abb5-72f030f17053",
-          "id": 4520,
+          "id": 5788,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2108,6 +2175,31 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Delete Incident Comment",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "delete_incident_comment",
+                "operationTitle": "Delete Incident Comment",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "f7ea100e-833d-4221-97cc-7d64eebe8732"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -2133,31 +2225,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "9b4097f2-972f-4a99-aed9-94dc6e3d26f2"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Delete Incident Comment",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "incidentcommentId": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "delete_incident_comment",
-                "operationTitle": "Delete Incident Comment",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "f7ea100e-833d-4221-97cc-7d64eebe8732"
             }
           ],
           "routes": [
@@ -2168,13 +2235,16 @@
               "sourceStep": "/api/3/workflow_steps/9b4097f2-972f-4a99-aed9-94dc6e3d26f2",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "97226b23-cab5-4731-b177-b7aa3ed83c84"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "af6026ed-2667-4c93-bbf5-c5b28876b8bc",
-          "id": 4521,
+          "id": 5789,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2204,6 +2274,31 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get Watchlist Item",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "watchlistAlias": "highValueAsset",
+                  "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_watchlist_item",
+                "operationTitle": "Get Watchlist Item",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2aaeffe9-0668-4691-9c19-29d654c323ed"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -2229,31 +2324,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "15d96830-6c0d-4b19-9356-3b00c6c528fa"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Watchlist Item",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "watchlistAlias": "highValueAsset",
-                  "watchlistItemId": "3f8901fe-63d9-4875-9ad5-9fb3b8105797"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_watchlist_item",
-                "operationTitle": "Get Watchlist Item",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "2aaeffe9-0668-4691-9c19-29d654c323ed"
             }
           ],
           "routes": [
@@ -2264,13 +2334,16 @@
               "sourceStep": "/api/3/workflow_steps/15d96830-6c0d-4b19-9356-3b00c6c528fa",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "392134bb-710d-4907-b76d-3127502aeb08"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "b7534939-a911-45b0-ac4e-587b923f3f76",
-          "id": 4522,
+          "id": 5790,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2308,7 +2381,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "get_bookmarks_list",
                 "operationTitle": "Get Incident Bookmarks List",
@@ -2359,13 +2432,16 @@
               "sourceStep": "/api/3/workflow_steps/a5396a55-f85c-4ce6-8699-5670c7513975",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "b906d4a1-4463-4e0f-afe4-fed629013c4d"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "b88d8b6e-bd13-4288-9aea-27734e990d89",
-          "id": 4523,
+          "id": 5791,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2393,6 +2469,51 @@
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/06c6dcba-cf29-497c-bd3e-95995362d0cf",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Incident Alert",
+              "description": null,
+              "arguments": {
+                "for_each": {
+                  "item": "{{vars.steps.List_Incidents.data}}",
+                  "parallel": false,
+                  "condition": ""
+                },
+                "arguments": {
+                  "incidentdata": "{{vars.item}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "/api/3/workflows/cf89bfca-2b17-4338-b712-aa9beb11ca97"
+              },
+              "status": null,
+              "top": "300",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+              "group": null,
+              "uuid": "5089bafb-3edc-4af8-87a8-ff00dae5d115"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "List Incidents",
+              "description": null,
+              "arguments": {
+                "arguments": [],
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "/api/3/workflows/73f30444-db95-411c-ace9-dada9da16781"
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+              "group": null,
+              "uuid": "4fd6af08-4486-4d87-9ead-9920af0fc17f"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -2423,51 +2544,6 @@
             },
             {
               "@type": "WorkflowStep",
-              "name": "List Incidents",
-              "description": null,
-              "arguments": {
-                "arguments": [],
-                "apply_async": false,
-                "step_variables": [],
-                "pass_parent_env": false,
-                "pass_input_record": false,
-                "workflowReference": "/api/3/workflows/73f30444-db95-411c-ace9-dada9da16781"
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-              "group": null,
-              "uuid": "4fd6af08-4486-4d87-9ead-9920af0fc17f"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Fetch Incident Alert",
-              "description": null,
-              "arguments": {
-                "for_each": {
-                  "item": "{{vars.steps.List_Incidents.data}}",
-                  "parallel": false,
-                  "condition": ""
-                },
-                "arguments": {
-                  "incidentdata": "{{vars.item}}"
-                },
-                "apply_async": false,
-                "step_variables": [],
-                "pass_parent_env": false,
-                "pass_input_record": false,
-                "workflowReference": "/api/3/workflows/cf89bfca-2b17-4338-b712-aa9beb11ca97"
-              },
-              "status": null,
-              "top": "300",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-              "group": null,
-              "uuid": "5089bafb-3edc-4af8-87a8-ff00dae5d115"
-            },
-            {
-              "@type": "WorkflowStep",
               "name": "Update Last Incident Pull Time",
               "description": null,
               "arguments": {
@@ -2492,11 +2568,22 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
+              "name": "Fetch Incident Alert -> Update Last Incident Pull Time",
+              "targetStep": "/api/3/workflow_steps/ef85b427-33cc-4018-8feb-a0f74e511448",
+              "sourceStep": "/api/3/workflow_steps/5089bafb-3edc-4af8-87a8-ff00dae5d115",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d78db12c-7a12-40b5-a74f-a50a7af4dc82"
+            },
+            {
+              "@type": "WorkflowRoute",
               "name": "List Incidents -> Fetch Incident Alert",
               "targetStep": "/api/3/workflow_steps/5089bafb-3edc-4af8-87a8-ff00dae5d115",
               "sourceStep": "/api/3/workflow_steps/4fd6af08-4486-4d87-9ead-9920af0fc17f",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "5952d10b-5186-48de-b492-6ccf10e5b599"
             },
             {
@@ -2506,22 +2593,16 @@
               "sourceStep": "/api/3/workflow_steps/06c6dcba-cf29-497c-bd3e-95995362d0cf",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "acfb3e75-109d-4877-a372-3c70f1d31bfe"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Fetch Incident Alert -> Update Last Incident Pull Time",
-              "targetStep": "/api/3/workflow_steps/ef85b427-33cc-4018-8feb-a0f74e511448",
-              "sourceStep": "/api/3/workflow_steps/5089bafb-3edc-4af8-87a8-ff00dae5d115",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "d78db12c-7a12-40b5-a74f-a50a7af4dc82"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "ba46dcc0-5bb2-4b27-b390-ef7433be2bb5",
-          "id": 4524,
+          "id": 5792,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2560,7 +2641,7 @@
                 "params": {
                   "relationName": "highValueAsset"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "delete_watchlist",
                 "operationTitle": "Delete Watchlist",
@@ -2611,13 +2692,16 @@
               "sourceStep": "/api/3/workflow_steps/80d122cd-726e-40ce-a5e9-75f0749fd384",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "76bd6f48-3260-432e-80f8-8b060e92932f"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "bf695c0f-3c70-49b3-a2ff-3327f6adefaa",
-          "id": 4525,
+          "id": 5793,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2647,6 +2731,30 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get Threat Intelligence Indicator",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_threat_intelligence_indicator",
+                "operationTitle": "Get Threat Intelligence Indicator",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8404465c-0100-4c6b-9238-0e7ebf3a714a"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -2672,30 +2780,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "28496036-b528-40c9-9050-1497f93ff1a3"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Threat Intelligence Indicator",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "id": "e16ef847-962e-d7b6-9c8b-a33e4bd30e47"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_threat_intelligence_indicator",
-                "operationTitle": "Get Threat Intelligence Indicator",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "8404465c-0100-4c6b-9238-0e7ebf3a714a"
             }
           ],
           "routes": [
@@ -2706,13 +2790,16 @@
               "sourceStep": "/api/3/workflow_steps/28496036-b528-40c9-9050-1497f93ff1a3",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "1add5766-3bc9-46e6-a1d0-ead182ade1f6"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "c0975faa-a3a2-4e53-9b23-46f78dbbf4be",
-          "id": 4526,
+          "id": 5794,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2750,7 +2837,7 @@
                 "params": {
                   "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "get_incident",
                 "operationTitle": "Get Incident Details",
@@ -2801,13 +2888,16 @@
               "sourceStep": "/api/3/workflow_steps/95cf092f-dbac-499e-a332-b5a3da70d350",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "a486db0a-7008-46d1-9ed8-9794533b1eef"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "c0de2fe1-6521-46ec-adaf-600f32ffd309",
-          "id": 4527,
+          "id": 5795,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2846,7 +2936,7 @@
                   "$skipToken": "",
                   "watchlistAlias": "highValueAsset"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "get_all_watchlist_items",
                 "operationTitle": "Get All Watchlist Items",
@@ -2897,13 +2987,16 @@
               "sourceStep": "/api/3/workflow_steps/cc5b8574-ab5e-46a2-84ab-f9547b03414b",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "4cdf8cb2-8928-47f6-8f98-417aa72fbfe6"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "cad7c746-7290-4906-a4c0-af9c0b657973",
-          "id": 4528,
+          "id": 5796,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2928,11 +3021,136 @@
             "incidentdata"
           ],
           "synchronous": false,
-          "lastModifyDate": 1677580716,
+          "lastModifyDate": 1762947031,
           "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/d97d5829-38e3-408a-ad05-8c15a0887dcf",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Append Incident List And Alert List",
+              "description": null,
+              "arguments": {
+                "incident": "{% set incident = vars.input.params['incidentdata'].update({'alerts': vars.steps.Get_Incident_Alert_List.data})%}",
+                "list_incident": "{{vars.input.params['incidentdata']}}",
+                "alert_status_map": "{'Unknown': {{'AlertStatus' | picklist('Pending') }}, 'New': {{'AlertStatus' | picklist('Open') }}, 'Resolved': {{'AlertStatus'| picklist('Closed') }}, 'Dismissed': {{'AlertStatus'| picklist('Closed') }}, 'InProgress': {{'AlertStatus'| picklist('Investigating') }}}",
+                "alert_severity_map": "{'Informational': {{'Severity' | picklist('Minimal') }}, 'Low': {{'Severity' | picklist('Low') }}, 'Medium': {{'Severity' | picklist('Medium') }}, 'High': {{'Severity'| picklist('High') }}}",
+                "incident_status_map": "{'Active': {{'IncidentStatus' | picklist('In Progress') }}, 'Closed': {{'IncidentStatus' | picklist('Resolved') }}, 'New': {{'IncidentStatus'| picklist('Open') }}}",
+                "incident_severity_map": "{'Informational': {{'Severity' | picklist('Minimal') }}, 'Low': {{'Severity' | picklist('Low') }}, 'Medium': {{'Severity' | picklist('Medium') }}, 'High': {{'Severity'| picklist('High') }}}"
+              },
+              "status": null,
+              "top": "435",
+              "left": "475",
+              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "group": null,
+              "uuid": "aed3028f-0e68-4129-9b90-99c8b00488b9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Check Entities are Present",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "option": "Yes",
+                    "step_iri": "/api/3/workflow_steps/806c377a-ccec-4d75-98f2-89633d51a789",
+                    "condition": "{{ vars.steps.Get_Incident_Entities_List.data.entities | length > 0 }}",
+                    "step_name": "Check Entity Type"
+                  },
+                  {
+                    "option": "No",
+                    "default": true,
+                    "step_iri": "/api/3/workflow_steps/012c7147-3792-4dc2-b051-595d0d807e98",
+                    "step_name": "No Operation"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "705",
+              "left": "300",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "8eb3aea9-e996-4383-9d2b-93a524bdcfb4"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Check Entity Type",
+              "description": null,
+              "arguments": {
+                "for_each": {
+                  "item": "{{vars.steps.Get_Incident_Entities_List.data.entities}}",
+                  "parallel": false,
+                  "condition": ""
+                },
+                "arguments": {
+                  "incident_id": "{{vars.input.params.incidentdata.name}}",
+                  "incident_entity": "{{vars.item}}",
+                  "incident_correlation_id": "{{vars.steps.Create_Record['@id']}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "/api/3/workflows/f1c461d8-6020-429c-8876-278337c25a57"
+              },
+              "status": null,
+              "top": "840",
+              "left": "475",
+              "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+              "group": null,
+              "uuid": "806c377a-ccec-4d75-98f2-89633d51a789"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Alert Record",
+              "description": null,
+              "arguments": {
+                "for_each": {
+                  "item": "{{vars.steps.Get_Incident_Alert_List.data.value}}",
+                  "__bulk": true,
+                  "parallel": false,
+                  "condition": "",
+                  "batch_size": 100
+                },
+                "resource": {
+                  "name": "{{vars.item.properties.alertDisplayName}}",
+                  "type": "/api/3/picklists/574a6ee2-7265-4701-815e-cff83b053bce",
+                  "state": "/api/3/picklists/a1bac09b-1441-45aa-ad1b-c88744e48e72",
+                  "source": "Microsoft Sentinel",
+                  "status": "{{vars.item.properties.status | resolveRange(vars.alert_status_map)}}",
+                  "ackDate": "{% if vars.item.properties.timeGenerated %}{{arrow.get(vars.item.properties.timeGenerated).int_timestamp}}{% endif %}",
+                  "severity": "{{vars.item.properties.severity | resolveRange(vars.alert_severity_map)}}",
+                  "sourceId": "{{vars.item.name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.steps.Create_Record['@id']}}",
+                  "sourcedata": "{{vars.item | toJSON}}",
+                  "description": "{{vars.item.properties.description}}",
+                  "ackSlaStatus": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",
+                  "assigneddate": "{% if vars.item.properties.processingEndTime %}{{arrow.get(vars.item.properties.processingEndTime).int_timestamp}}{% endif %}",
+                  "resolveddate": "{% if vars.item.properties.endTimeUtc %}{{arrow.get(vars.item.properties.endTimeUtc).int_timestamp}}{% endif %}",
+                  "respSlaStatus": "/api/3/picklists/72979f64-e8b9-4888-a965-957e0ec24818",
+                  "priorityWeight": 1,
+                  "alertDetectionDate": "{% if vars.item.properties.startTimeUtc %}{{arrow.get(vars.item.properties.startTimeUtc).int_timestamp}}{% endif %}",
+                  "escalatedtoincident": "/api/3/picklists/2128a09c-153d-4db3-985d-de6be33deae5",
+                  "resolvedAutomatedly": false,
+                  "alertRemainingAckSLA": 0
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/alerts",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "705",
+              "left": "650",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "3b08a85f-52c6-4216-a07e-7779cf8a8808"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Create Record",
@@ -2962,8 +3180,8 @@
                 "step_variables": []
               },
               "status": null,
-              "top": "435",
-              "left": "125",
+              "top": "570",
+              "left": "475",
               "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
               "group": null,
               "uuid": "150d1246-fdff-4807-9f6b-ebf1b6b8eaad"
@@ -2978,7 +3196,7 @@
                 "params": {
                   "incidentId": "{{vars.input.params.incidentdata.name}}"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "get_alert_list",
                 "operationTitle": "Get Incident Alert List",
@@ -2987,27 +3205,53 @@
               },
               "status": null,
               "top": "165",
-              "left": "125",
+              "left": "475",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
               "uuid": "6bd7c22c-72eb-44d8-a8a9-c940f2198c61"
             },
             {
               "@type": "WorkflowStep",
-              "name": "Append Incident List And Alert List",
+              "name": "Get Incident Entities List",
               "description": null,
               "arguments": {
-                "incident": "{% set incident = vars.input.params['incidentdata'].update({'alerts': vars.steps.Get_Incident_Alert_List.data})%}",
-                "list_incident": "{{vars.input.params['incidentdata']}}",
-                "incident_status_map": "{'Active': {{'IncidentStatus' | picklist('In Progress') }}, 'Closed': {{'IncidentStatus' | picklist('Resolved') }}, 'New': {{'IncidentStatus'| picklist('Open') }}}",
-                "incident_severity_map": "{'Informational': {{'Severity' | picklist('Minimal') }}, 'Low': {{'Severity' | picklist('Low') }}, 'Medium': {{'Severity' | picklist('Medium') }}, 'High': {{'Severity'| picklist('High') }}}"
+                "name": "Microsoft Sentinel",
+                "config": "cfb5fa82-112d-489c-a502-6f4d8e064196",
+                "params": {
+                  "incidentId": "{{vars.input.params.incidentdata.name}}"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_entities_list",
+                "operationTitle": "Get Incident Entities List",
+                "pickFromTenant": false,
+                "step_variables": []
               },
               "status": null,
               "top": "300",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+              "left": "475",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "aed3028f-0e68-4129-9b90-99c8b00488b9"
+              "uuid": "afebbf03-4d5d-42de-a97e-68c8cd79d7f1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "No Operation",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "840",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "012c7147-3792-4dc2-b051-595d0d807e98"
             },
             {
               "@type": "WorkflowStep",
@@ -3022,7 +3266,7 @@
               },
               "status": null,
               "top": "30",
-              "left": "125",
+              "left": "475",
               "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
               "group": null,
               "uuid": "d97d5829-38e3-408a-ad05-8c15a0887dcf"
@@ -3031,43 +3275,98 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get Incident Alert List",
-              "targetStep": "/api/3/workflow_steps/6bd7c22c-72eb-44d8-a8a9-c940f2198c61",
-              "sourceStep": "/api/3/workflow_steps/d97d5829-38e3-408a-ad05-8c15a0887dcf",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "6ca6ecea-8f27-4926-9234-b9e5b4053019"
-            },
-            {
-              "@type": "WorkflowRoute",
               "name": "Append Incident List And Alert List -> Create Record",
               "targetStep": "/api/3/workflow_steps/150d1246-fdff-4807-9f6b-ebf1b6b8eaad",
               "sourceStep": "/api/3/workflow_steps/aed3028f-0e68-4129-9b90-99c8b00488b9",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "9b17ec0f-ea4c-4895-93c8-3eb0cb3f9fc3"
             },
             {
               "@type": "WorkflowRoute",
-              "name": "Get Incident Alert List -> Append Incident List And Alert List",
-              "targetStep": "/api/3/workflow_steps/aed3028f-0e68-4129-9b90-99c8b00488b9",
+              "name": "Check Entities are Present -> Check Entity Type",
+              "targetStep": "/api/3/workflow_steps/806c377a-ccec-4d75-98f2-89633d51a789",
+              "sourceStep": "/api/3/workflow_steps/8eb3aea9-e996-4383-9d2b-93a524bdcfb4",
+              "label": "Yes",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "56d4a9ed-0d77-44e1-84c2-2a2ebaabc512"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Check Entities are Present -> No Operation",
+              "targetStep": "/api/3/workflow_steps/012c7147-3792-4dc2-b051-595d0d807e98",
+              "sourceStep": "/api/3/workflow_steps/8eb3aea9-e996-4383-9d2b-93a524bdcfb4",
+              "label": "No",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9537b513-46c5-49a6-b32c-cfef08568c4d"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Create Record -> Check Entities are Present",
+              "targetStep": "/api/3/workflow_steps/8eb3aea9-e996-4383-9d2b-93a524bdcfb4",
+              "sourceStep": "/api/3/workflow_steps/150d1246-fdff-4807-9f6b-ebf1b6b8eaad",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "d8e62fd9-0d5d-4d5e-9d2a-b7c8c7e9f375"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Create Record -> Create Alert Record",
+              "targetStep": "/api/3/workflow_steps/3b08a85f-52c6-4216-a07e-7779cf8a8808",
+              "sourceStep": "/api/3/workflow_steps/150d1246-fdff-4807-9f6b-ebf1b6b8eaad",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "ff35851f-f1e8-4be8-9aa0-3cbabd7e510c"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Incident Alert List -> Get Incident Entities List",
+              "targetStep": "/api/3/workflow_steps/afebbf03-4d5d-42de-a97e-68c8cd79d7f1",
               "sourceStep": "/api/3/workflow_steps/6bd7c22c-72eb-44d8-a8a9-c940f2198c61",
               "label": null,
               "isExecuted": false,
-              "uuid": "e5a7f4ed-2a79-457b-b824-44caae5fcc66"
+              "group": null,
+              "uuid": "ec390e61-3789-4690-8d94-b9d6b673d39d"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Get Incident Entities List -> Append Incident List And Alert List",
+              "targetStep": "/api/3/workflow_steps/aed3028f-0e68-4129-9b90-99c8b00488b9",
+              "sourceStep": "/api/3/workflow_steps/afebbf03-4d5d-42de-a97e-68c8cd79d7f1",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "a9f785a0-0502-4b73-9f6d-e53c5fa138ff"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Incident Alert List",
+              "targetStep": "/api/3/workflow_steps/6bd7c22c-72eb-44d8-a8a9-c940f2198c61",
+              "sourceStep": "/api/3/workflow_steps/d97d5829-38e3-408a-ad05-8c15a0887dcf",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "6ca6ecea-8f27-4926-9234-b9e5b4053019"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "cf89bfca-2b17-4338-b712-aa9beb11ca97",
-          "id": 4529,
+          "id": 5797,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "dataingestion",
             "create",
+            "dataingestion",
             "microsoft-sentinel"
           ]
         },
@@ -3089,32 +3388,6 @@
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/a42e2676-48e8-4e22-8d1c-d853b1dd38a8",
           "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Update Incident Relations",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
-                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "update_incident_relations",
-                "operationTitle": "Update Incident Relations",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "2707a795-6189-45bd-8df3-f4af4d483734"
-            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -3142,6 +3415,32 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "a42e2676-48e8-4e22-8d1c-d853b1dd38a8"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Incident Relations",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "update_incident_relations",
+                "operationTitle": "Update Incident Relations",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2707a795-6189-45bd-8df3-f4af4d483734"
             }
           ],
           "routes": [
@@ -3152,13 +3451,16 @@
               "sourceStep": "/api/3/workflow_steps/a42e2676-48e8-4e22-8d1c-d853b1dd38a8",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "8c1cfac9-de0a-48d7-8f69-4ab9abb5e8bb"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "d53d5c45-c7bb-44f4-98b8-ee1b9fc38ec4",
-          "id": 4530,
+          "id": 5798,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3188,6 +3490,32 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Create Incident Relations",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
+                  "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
+                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "create_incident_relations",
+                "operationTitle": "Create Incident Relations",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "e4aa85c7-2ba1-4537-9c85-4b3e88d0b54d"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -3213,32 +3541,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "53d91333-c7e0-4f3d-96ba-ba4524cdd5ea"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Create Incident Relations",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7",
-                  "resourceId": "/subscriptions/6212c9c8-54a6-41ee-846b-37727030c040/resourceGroups/fortinet-pune/providers/Microsoft.OperationalInsights/workspaces/FortiSOAR-Integration/providers/Microsoft.SecurityInsights/bookmarks/2216d0e1-91e3-4902-89fd-d2df8c535096",
-                  "relationName": "4bb36b7b-26ff-4d1c-9cbe-0d8ab3da0014"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "create_incident_relations",
-                "operationTitle": "Create Incident Relations",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "e4aa85c7-2ba1-4537-9c85-4b3e88d0b54d"
             }
           ],
           "routes": [
@@ -3249,19 +3551,706 @@
               "sourceStep": "/api/3/workflow_steps/53d91333-c7e0-4f3d-96ba-ba4524cdd5ea",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "dbd0e323-cfdf-4a8c-bcf5-1411548005b7"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "e8f5053e-d8d6-4ad9-b2bf-eb9065ca6e37",
-          "id": 4531,
+          "id": 5799,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
             "Microsoft",
+            "microsoft-sentinel"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Microsoft Sentinel > Fetch Incident Entities",
+          "aliasName": null,
+          "tag": null,
+          "description": "Fetch entities for specified incident.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [
+            "incident_id",
+            "incident_entity",
+            "incident_correlation_id"
+          ],
+          "synchronous": false,
+          "lastModifyDate": 1762960977,
+          "collection": "/api/3/workflow_collections/8589641d-44c6-4319-b1ee-46d286522fe3",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/c355305b-729b-47a8-b44c-5be9d9c4232d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Create AccountName Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.accountName}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Friendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>Is Domain Joined: </b>\n{{vars.input.params['incident_entity'].properties.isDomainJoined}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/e72907c5-2088-4e85-99d0-6c7970a5470e",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "540",
+              "left": "900",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "f00c7f11-6aea-4e76-8f09-efaff5d1f723"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create AddUserID Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.aadUserId}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Friendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>Is Domain Joined: </b>\n{{vars.input.params['incident_entity'].properties.isDomainJoined}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/e72907c5-2088-4e85-99d0-6c7970a5470e",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "540",
+              "left": "1220",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "54cceacd-71f6-46da-a2fa-b1065e499473"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Domain Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.domainName}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>FriendlyName: </b> {{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>DNS Server IP Entity ID: </b>\n{{vars.input.params['incident_entity'].properties.dnsServerIpEntityId}}\n\n<b>Host IP Address Entity ID: </b>\n{{vars.input.params['incident_entity'].properties.hostIpAddressEntityId}}\n\n<b>IP Address Entity IDs: </b>\n{{vars.input.params['incident_entity'].properties.ipAddressEntityIds}}\n",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/5a5a7d42-be27-4903-858a-19909ebfa1eb",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "220",
+              "left": "100",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "d11daf9c-dac2-4918-8966-078074df4822"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create FileHash Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.hashValue}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Friendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>Algorithm: </b>\n{{vars.input.params['incident_entity'].properties.algorithm}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/0ca054f2-d923-4992-a4a7-c516e6df281e",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "440",
+              "left": "840",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "b2fe359b-d1f9-400f-b4c8-a6ae4ed50c3e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Host Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.hostName}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Friendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>Host Name: </b>\n{{vars.input.params['incident_entity'].properties.hostName}}\n\n<b>Is Domain Joined:  </b>\n{{vars.input.params['incident_entity'].properties.isDomainJoined}}\n\n<b>Net BiosName: </b>\n{{vars.input.params['incident_entity'].properties.netBiosName}}\n\n<b>NT Domain: </b>\n{{vars.input.params['incident_entity'].properties.ntDomain}}\n\n<b>OMS Agent ID: </b>\n{{vars.input.params['incident_entity'].properties.omsAgentID}}\n\n<b>OS Family: </b>\n{{vars.input.params['incident_entity'].properties.osFamily}}\n\n<b>OS Version: </b>\n{{vars.input.params['incident_entity'].properties.osVersion}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/3272abd8-a1ae-4663-8c47-6d1195e684d9",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "620",
+              "left": "160",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "6c474033-e5c1-4b46-9c03-17bb2b3aaceb"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create IP Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.address}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>FriendlyName: </b> {{vars.input.params['incident_entity'].properties.friendlyName}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/c0beeda4-2c7a-4214-b7e5-53ba1649539c",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "120",
+              "left": "100",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "00d9a143-1f69-477e-a65f-e2ce0fa7b437"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Mail Message Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.p1Sender}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Sender IP: </b>\n{{vars.input.params['incident_entity'].properties.senderIP}}\n\n<b>Recipient: </b>\n{{vars.input.params['incident_entity'].properties.recipient}}\n\n<b>Subject: </b>\n{{vars.input.params['incident_entity'].properties.subject}}\n\n<b>Threat Detection Methods: </b>\n{{vars.input.params['incident_entity'].properties.threatDetectionMethods}}\n\n<b>Threats </b>\n{{vars.input.params['incident_entity'].properties.threats}}\n\n<b>Sender Email Address </b>\n{{vars.input.params['incident_entity'].properties.p1Sender}}\n\n<b>Sender Display Name: </b>\n{{vars.input.params['incident_entity'].properties.p1SenderDisplayName}}\n\n<b>Sender Domain: </b>\n{{vars.input.params['incident_entity'].properties.p1SenderDomain}}\n\n<b>Receive Date: </b>\n{{vars.input.params['incident_entity'].properties.receiveDate}}\n\n<b>Delivery Action: </b>\n{{vars.input.params['incident_entity'].properties.deliveryAction}}\n\n<b>Delivery Location: </b>\n{{vars.input.params['incident_entity'].properties.deliveryLocation\t\n }}\n\n<b>AntiSpam Direction: </b>\n{{vars.input.params['incident_entity'].properties.antispamDirection}}\n\n<b>File Entity IDs: </b>\n{{vars.input.params['incident_entity'].properties.fileEntityIds}}\n\n<b>Friendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>Internet Message ID: </b>\n{{vars.input.params['incident_entity'].properties.internetMessageId}}\n",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/80bd55b0-6d88-4beb-bec3-97954f261c4d",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "420",
+              "left": "100",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "a4152010-b5c5-4075-a188-9215fb342d1d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Process Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.processId}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "firstSeen": "{{vars.input.params['incident_entity'].properties.creationTimeUtc}}",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Firendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>Account Entity ID </b>\n{{vars.input.params['incident_entity'].properties.accountEntityId}}\n\n<b>Command Line: </b>\n{{vars.input.params['incident_entity'].properties.commandLine}}\n\n<b>Elevation Token: </b>\n{{vars.input.params['incident_entity'].properties.elevationToken}}\n\n<b>Host Entity ID: </b>\n{{vars.input.params['incident_entity'].properties.hostEntityId}}\n\n<b>Host Logon Session Entity ID: </b>\n{{vars.input.params['incident_entity'].properties.hostLogonSessionEntityId}}\n\n<b>Image File Entity ID: </b>\n{{vars.input.params['incident_entity'].properties.imageFileEntityId}}\n\n<b>Parent Process Entity ID: </b>\n{{vars.input.params['incident_entity'].properties.parentProcessEntityId}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/a6ab7480-a0b1-4917-a6b9-c9b16ddc7e9b",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "840",
+              "left": "520",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "7be81367-eb51-4cfc-97b5-9b5754c06481"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Registry Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.key}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Friendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>Rigestry Hive: </b>\n{{vars.input.params['incident_entity'].properties.hive}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/9e783ec9-90cd-40bb-afec-976f30055108",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "800",
+              "left": "240",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "bd13733b-9309-4acc-bf75-08f7969eaa70"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create UpnName Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.additionalData.UpnName}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Friendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}\n\n<b>Is Enabled: </b>\n{{vars.input.params['incident_entity'].properties.additionalData.IsEnabled}}\n\n<b>Roles: </b>\n{{vars.input.params['incident_entity'].properties.additionalData.TransitiveDirectoryRoles}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/e72907c5-2088-4e85-99d0-6c7970a5470e",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "520",
+              "left": "1600",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "38d10237-42e6-488b-aa81-2b09c7527ae1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create URL Indicator",
+              "description": null,
+              "arguments": {
+                "resource": {
+                  "tlp": "/api/3/picklists/7bff95b7-6438-4b01-b23a-0fe8cb5b33d3",
+                  "value": "{{vars.input.params['incident_entity'].properties.url}}",
+                  "sources": "Microsoft Sentinel",
+                  "sourceID": "{{vars.input.params['incident_entity'].name}}",
+                  "__replace": "true",
+                  "incidents": "{{vars.input.params['incident_correlation_id']}}",
+                  "description": "<b>Friendly Name: </b>\n{{vars.input.params['incident_entity'].properties.friendlyName}}",
+                  "indicatorStatus": "/api/3/picklists/2f5cff61-fbff-4bb3-96be-302b78a9fb47",
+                  "typeofindicator": "/api/3/picklists/353a37b4-3eeb-43ee-aac6-64806422cfec",
+                  "enrichmentStatus": "/api/3/picklists/a6d9da29-27b1-4b8a-965d-8d91518540d5"
+                },
+                "operation": "Overwrite",
+                "collection": "/api/3/upsert/indicators",
+                "__recommend": [],
+                "fieldOperation": {
+                  "recordTags": "Overwrite"
+                },
+                "step_variables": []
+              },
+              "status": null,
+              "top": "320",
+              "left": "100",
+              "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
+              "group": null,
+              "uuid": "a4631d78-3428-4abf-8ad7-ad42030829ff"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Indicator Type",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "option": "IP",
+                    "step_iri": "/api/3/workflow_steps/00d9a143-1f69-477e-a65f-e2ce0fa7b437",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"Ip\" }}",
+                    "step_name": "Create IP Indicator"
+                  },
+                  {
+                    "option": "URL",
+                    "step_iri": "/api/3/workflow_steps/a4631d78-3428-4abf-8ad7-ad42030829ff",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"Url\" }}",
+                    "step_name": "Create URL Indicator"
+                  },
+                  {
+                    "option": "User",
+                    "step_iri": "/api/3/workflow_steps/2223d121-d560-4032-a4b4-1f016014c803",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"Account\" }}",
+                    "step_name": "User Type"
+                  },
+                  {
+                    "option": "No Operation",
+                    "default": true,
+                    "step_iri": "/api/3/workflow_steps/321b1247-34e8-4778-96be-a054e6e0155f",
+                    "step_name": "No Operation"
+                  },
+                  {
+                    "option": "Domain",
+                    "step_iri": "/api/3/workflow_steps/d11daf9c-dac2-4918-8966-078074df4822",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"DnsResolution\" }}",
+                    "step_name": "Create Domain Indicator"
+                  },
+                  {
+                    "option": "Mail Message",
+                    "step_iri": "/api/3/workflow_steps/a4152010-b5c5-4075-a188-9215fb342d1d",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"MailMessage\" }}",
+                    "step_name": "Create Mail Message Indicator"
+                  },
+                  {
+                    "option": "Host",
+                    "step_iri": "/api/3/workflow_steps/6c474033-e5c1-4b46-9c03-17bb2b3aaceb",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"Host\" }}",
+                    "step_name": "Create Host Indicator"
+                  },
+                  {
+                    "option": "FileHash",
+                    "step_iri": "/api/3/workflow_steps/b2fe359b-d1f9-400f-b4c8-a6ae4ed50c3e",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"FileHash\" }}",
+                    "step_name": "Create FileHash Indicator"
+                  },
+                  {
+                    "option": "Registry Key",
+                    "step_iri": "/api/3/workflow_steps/bd13733b-9309-4acc-bf75-08f7969eaa70",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"RegistryKey\" }}",
+                    "step_name": "Create Registry Indicator"
+                  },
+                  {
+                    "option": "Process",
+                    "step_iri": "/api/3/workflow_steps/7be81367-eb51-4cfc-97b5-9b5754c06481",
+                    "condition": "{{ vars.input.params['incident_entity'].kind == \"Process\" }}",
+                    "step_name": "Create Process Indicator"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "180",
+              "left": "680",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "08d21f93-01df-47b7-a5c0-a336902646c9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "No Operation",
+              "description": null,
+              "arguments": {
+                "params": [],
+                "version": "3.7.0",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
+                "step_variables": []
+              },
+              "status": null,
+              "top": "160",
+              "left": "1300",
+              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+              "group": null,
+              "uuid": "321b1247-34e8-4778-96be-a054e6e0155f"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "__triggerLimit": true,
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                },
+                "triggerOnSource": true,
+                "triggerOnReplicate": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "650",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+              "group": null,
+              "uuid": "c355305b-729b-47a8-b44c-5be9d9c4232d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "User Type",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "option": "Has UpnName",
+                    "step_iri": "/api/3/workflow_steps/38d10237-42e6-488b-aa81-2b09c7527ae1",
+                    "condition": "{{ vars.input.params['incident_entity'].properties.additionalData.UpnName | length > 0 }}",
+                    "step_name": "Create UpnName Indicator"
+                  },
+                  {
+                    "option": "Has AccountName",
+                    "step_iri": "/api/3/workflow_steps/f00c7f11-6aea-4e76-8f09-efaff5d1f723",
+                    "condition": "{{ vars.input.params['incident_entity'].properties.accountName | length > 0 }}",
+                    "step_name": "Create AccountName Indicator"
+                  },
+                  {
+                    "option": "Has aadUserId",
+                    "step_iri": "/api/3/workflow_steps/54cceacd-71f6-46da-a2fa-b1065e499473",
+                    "condition": "{{ vars.input.params['incident_entity'].properties.aadUserId | length > 0 }}",
+                    "step_name": "Create AddUserID Indicator"
+                  }
+                ],
+                "step_variables": []
+              },
+              "status": null,
+              "top": "300",
+              "left": "1160",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "2223d121-d560-4032-a4b4-1f016014c803"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> Create Domain Indicator",
+              "targetStep": "/api/3/workflow_steps/d11daf9c-dac2-4918-8966-078074df4822",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "Domain",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "9270d6d6-b59a-4639-9936-34824d4e8e9c"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> Create FileHash Indicator",
+              "targetStep": "/api/3/workflow_steps/b2fe359b-d1f9-400f-b4c8-a6ae4ed50c3e",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "FileHash",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "14705d1d-dd4c-41f9-b9a3-c818694ce1d4"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> Create Host Indicator",
+              "targetStep": "/api/3/workflow_steps/6c474033-e5c1-4b46-9c03-17bb2b3aaceb",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "Host",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "a012bea0-8548-4ab6-adfd-4480c7544152"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> Create IP Indicator",
+              "targetStep": "/api/3/workflow_steps/00d9a143-1f69-477e-a65f-e2ce0fa7b437",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "IP",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "62579e0c-71bd-4b28-a02e-2114c21adc5d"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> Create Mail Message Indicator",
+              "targetStep": "/api/3/workflow_steps/a4152010-b5c5-4075-a188-9215fb342d1d",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "Mail Message",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "72fc315b-6e99-4456-a7f0-16798566a3b2"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> Create Process Indicator",
+              "targetStep": "/api/3/workflow_steps/7be81367-eb51-4cfc-97b5-9b5754c06481",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "Process",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "8cfd4fa5-918f-442a-966f-4964dcbcb020"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> Create Registry Indicator",
+              "targetStep": "/api/3/workflow_steps/bd13733b-9309-4acc-bf75-08f7969eaa70",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "Registry Key",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "3b2deb72-6254-4df1-acb7-e235741f9c7e"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> Create URL Indicator",
+              "targetStep": "/api/3/workflow_steps/a4631d78-3428-4abf-8ad7-ad42030829ff",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "URL",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "dbe6fe4e-0432-47df-bbba-dfac343e5669"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> No Operation",
+              "targetStep": "/api/3/workflow_steps/321b1247-34e8-4778-96be-a054e6e0155f",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "No Operation",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "067b8b17-976a-4b34-85d3-5bc0f5ee648e"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Indicator Type -> User Type",
+              "targetStep": "/api/3/workflow_steps/2223d121-d560-4032-a4b4-1f016014c803",
+              "sourceStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "label": "User",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "4d9c6501-2059-4584-84b7-deb47277898f"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Indicator Type",
+              "targetStep": "/api/3/workflow_steps/08d21f93-01df-47b7-a5c0-a336902646c9",
+              "sourceStep": "/api/3/workflow_steps/c355305b-729b-47a8-b44c-5be9d9c4232d",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "55852844-5f91-4d18-80a3-02dcfcdceeba"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "User Type -> Create AccountName Indicator",
+              "targetStep": "/api/3/workflow_steps/f00c7f11-6aea-4e76-8f09-efaff5d1f723",
+              "sourceStep": "/api/3/workflow_steps/2223d121-d560-4032-a4b4-1f016014c803",
+              "label": "Has AccountName",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "12dbb10f-890f-4936-a8ed-5ecd7d6036c4"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "User Type -> Create AddUserID Indicator",
+              "targetStep": "/api/3/workflow_steps/54cceacd-71f6-46da-a2fa-b1065e499473",
+              "sourceStep": "/api/3/workflow_steps/2223d121-d560-4032-a4b4-1f016014c803",
+              "label": "Has aadUserId",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "c61e8620-8b1f-4441-8ab3-f8c45282c2ac"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "User Type -> Create UpnName Indicator",
+              "targetStep": "/api/3/workflow_steps/38d10237-42e6-488b-aa81-2b09c7527ae1",
+              "sourceStep": "/api/3/workflow_steps/2223d121-d560-4032-a4b4-1f016014c803",
+              "label": "Has UpnName",
+              "isExecuted": false,
+              "group": null,
+              "uuid": "c8cd2f71-f2d0-4cc0-8078-6c91a7081202"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "f1c461d8-6020-429c-8876-278337c25a57",
+          "id": 5807,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "create",
+            "dataingestion",
             "microsoft-sentinel"
           ]
         },
@@ -3283,6 +4272,30 @@
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/68765b7d-a23d-463e-8d88-b0643e900345",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Incident Entities List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_entities_list",
+                "operationTitle": "Get Incident Entities List",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "fef293df-9142-43fd-ac91-719f5d178dcd"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -3310,30 +4323,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "68765b7d-a23d-463e-8d88-b0643e900345"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Incident Entities List",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "incidentId": "62d2b57d-fe59-4ec5-b789-0e5cf4ff78b7"
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_entities_list",
-                "operationTitle": "Get Incident Entities List",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "fef293df-9142-43fd-ac91-719f5d178dcd"
             }
           ],
           "routes": [
@@ -3344,13 +4333,16 @@
               "sourceStep": "/api/3/workflow_steps/68765b7d-a23d-463e-8d88-b0643e900345",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "e3a3600f-339e-4d60-92d4-ba1a13a60773"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "f4a34344-b9fd-45b3-9097-0625ff327bcf",
-          "id": 4532,
+          "id": 5800,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3389,7 +4381,7 @@
                   "watchlistAlias": "highValueAsset",
                   "watchlistItemId": "82ba292c-dc97-4dfc-969d-d4dd9e666842"
                 },
-                "version": "1.0.1",
+                "version": "1.1.0",
                 "connector": "microsoft-sentinel",
                 "operation": "delete_watchlist_item",
                 "operationTitle": "Delete Watchlist Item",
@@ -3440,13 +4432,16 @@
               "sourceStep": "/api/3/workflow_steps/b872c93c-6ec9-4db0-abe0-9fdac4ccf508",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "90146641-997b-4c4f-815a-364ed994f76c"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "f68de8d1-a3a3-4f70-aa8d-3a1f6e191717",
-          "id": 4533,
+          "id": 5801,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3476,6 +4471,30 @@
           "steps": [
             {
               "@type": "WorkflowStep",
+              "name": "Get All Watchlist",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Sentinel",
+                "config": "",
+                "params": {
+                  "$skipToken": ""
+                },
+                "version": "1.1.0",
+                "connector": "microsoft-sentinel",
+                "operation": "get_all_watchlist",
+                "operationTitle": "Get All Watchlist",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "c59bfbf3-4f96-40e5-885f-57f2ac223641"
+            },
+            {
+              "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
@@ -3501,30 +4520,6 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
               "uuid": "6e8e890c-057f-4183-b7e2-22ec4c005af7"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get All Watchlist",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Sentinel",
-                "config": "",
-                "params": {
-                  "$skipToken": ""
-                },
-                "version": "1.0.1",
-                "connector": "microsoft-sentinel",
-                "operation": "get_all_watchlist",
-                "operationTitle": "Get All Watchlist",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "c59bfbf3-4f96-40e5-885f-57f2ac223641"
             }
           ],
           "routes": [
@@ -3535,13 +4530,16 @@
               "sourceStep": "/api/3/workflow_steps/6e8e890c-057f-4183-b7e2-22ec4c005af7",
               "label": null,
               "isExecuted": false,
+              "group": null,
               "uuid": "365b2f1e-ad86-4021-9ce1-6dd1f8e6668c"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
           "uuid": "ffbc41be-c852-4b73-96d8-3032e992f363",
-          "id": 4534,
+          "id": 5802,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
