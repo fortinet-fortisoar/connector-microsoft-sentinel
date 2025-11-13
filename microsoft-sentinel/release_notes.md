@@ -1,4 +1,4 @@
-#### Following enhancements have been made to the `Microsoft Sentinel` Connector in version 1.0.1:
+#### Following enhancements have been made to the `Microsoft Sentinel` Connector in version 1.1.0:
 
-- Fixed the issue with `Update Incident` operation so that the tags present for an incident in the `Microsoft Sentinel` workspace are not deleted. 
-- Added `Labels` parameter in `Update Incident` operation.
+- Enhanced data ingestion playbooks to fetch and generate distinct records for alerts and entities, correlating them
+  with their respective incidents.

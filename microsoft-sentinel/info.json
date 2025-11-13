@@ -1,7 +1,7 @@
 {
   "name": "microsoft-sentinel",
   "label": "Microsoft Sentinel",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Microsoft Sentinel is Cloud-native SIEM for intelligent security analytics for your entire enterprise. These connector connects to Microsoft sentinel using Sentinel APIs to investigate on alerts, threats intelligence indicator, incidents, incident entities, incident relations, incident comments, and incident bookmarks.",
   "publisher": "Fortinet",
   "cs_approved": true,
@@ -9,7 +9,7 @@
   "category": "Analytics and SIEM",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.1/microsoft-sentinel/924/microsoft-sentinel-v1-0-1",
+  "help_online": "",
   "ingestion_supported": true,
   "ingestion_modes": [
     "scheduled"
