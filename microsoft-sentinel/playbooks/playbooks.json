@@ -1186,7 +1186,7 @@
                   "$orderby": "",
                   "Severity": "{{vars.Severity}}",
                   "$skipToken": "",
-                  "created_datetime": "{{vars.last_pull_time}}"
+                  "created_datetime": "{{arrow.get(vars.last_pull_time).shift(minutes=-15).format(\"YYYY-MM-DDTHH:mm:ss.ssss\")}}Z"
                 },
                 "version": "1.1.0",
                 "connector": "microsoft-sentinel",
@@ -4249,7 +4249,6 @@
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "create",
             "dataingestion",
             "microsoft-sentinel"
           ]
