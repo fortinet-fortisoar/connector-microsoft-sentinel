@@ -1,7 +1,7 @@
 {
   "name": "microsoft-sentinel",
   "label": "Microsoft Sentinel",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Microsoft Sentinel is Cloud-native SIEM for intelligent security analytics for your entire enterprise. These connector connects to Microsoft sentinel using Sentinel APIs to investigate on alerts, threats intelligence indicator, incidents, incident entities, incident relations, incident comments, and incident bookmarks.",
   "publisher": "Fortinet",
   "cs_approved": false,
@@ -9,7 +9,7 @@
   "category": "Analytics and SIEM",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.1.0/microsoft-sentinel/110/microsoft-sentinel-v1-1-0",
+  "help_online": "",
   "ingestion_supported": true,
   "ingestion_modes": [
     "scheduled"
@@ -17,94 +17,184 @@
   "configuration": {
     "fields": [
       {
-        "title": "Server URL",
-        "name": "resource",
-        "type": "text",
-        "description": "The service-based URL to which you will connect and perform the automated operations.",
-        "tooltip": "The service-based URL to which you will connect and perform the automated operations.",
-        "placeholder": "https://management.azure.com",
-        "value": "https://management.azure.com",
-        "required": true,
-        "editable": true,
-        "visible": true
-      },
-      {
-        "title": "Tenant ID",
-        "name": "tenant_id",
-        "type": "text",
-        "description": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
-        "tooltip": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
-        "required": true,
-        "editable": true,
-        "visible": true
-      },
-      {
-        "title": "Client ID",
-        "name": "client_id",
-        "type": "text",
-        "description": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
-        "tooltip": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
-        "required": true,
-        "editable": true,
-        "visible": true
-      },
-      {
-        "title": "Client Secret",
-        "name": "client_secret",
-        "type": "password",
-        "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
-        "tooltip": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
-        "required": true,
-        "editable": true,
-        "visible": true
-      },
-      {
-        "title": "Authorization Code",
-        "name": "code",
-        "type": "password",
-        "tooltip": "The authorization code that you acquired in the authorization step.",
-        "description": "The authorization code that you acquired during the authorization step. For more information, see the Getting Authorization Code using the Generating the Authorization Code section.",
-        "required": true,
-        "editable": true,
-        "visible": true
-      },
-      {
-        "title": "Workspace Subscription ID",
-        "description": "Subscription ID of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+        "title": "Get Access Token",
         "required": true,
         "editable": true,
         "visible": true,
-        "type": "password",
-        "name": "WorkspaceSubscriptionId"
-      },
-      {
-        "title": "Workspace Resource Group",
-        "description": "Resource Group of the Microsoft Sentinel that is used to access the Sentinel APIs.",
-        "required": true,
-        "editable": true,
-        "visible": true,
-        "type": "text",
-        "name": "WorkspaceResourceGroup"
-      },
-      {
-        "title": "Workspace Name",
-        "description": "Workspace name of the Microsoft Sentinel that is used to access the Sentinel APIs.",
-        "required": true,
-        "editable": true,
-        "visible": true,
-        "type": "text",
-        "name": "WorkspaceName"
-      },
-      {
-        "title": "Redirect URI",
-        "name": "redirect_uri",
-        "type": "text",
-        "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
-        "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal.",
-        "placeholder": "E.g. https://localhost/myapp",
-        "required": false,
-        "editable": true,
-        "visible": true
+        "type": "select",
+        "options": [
+          "Without a User - Application Permission",
+          "On behalf of User - Delegate Permission"
+        ],
+        "name": "auth_type",
+        "value": "On behalf of User - Delegate Permission",
+        "description": "Select the method using which you will get authentication tokens used to access the security graph APIs. You can choose between On behalf of User - Delegate Permission, Without a User - Application Permission or Certificate Based Authentication.",
+        "tooltip": "Select the method using which you will get authentication tokens used to access the security graph APIs.",
+        "onchange": {
+          "Without a User - Application Permission": [
+            {
+              "title": "Server URL",
+              "name": "resource",
+              "type": "text",
+              "description": "The service-based URL to which you will connect and perform the automated operations.",
+              "tooltip": "The service-based URL to which you will connect and perform the automated operations.",
+              "placeholder": "https://management.azure.com",
+              "value": "https://management.azure.com",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Tenant ID",
+              "name": "tenant_id",
+              "type": "text",
+              "description": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
+              "tooltip": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Client ID",
+              "name": "client_id",
+              "type": "text",
+              "description": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+              "tooltip": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Client Secret",
+              "name": "client_secret",
+              "type": "password",
+              "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
+              "tooltip": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Workspace Subscription ID",
+              "description": "Subscription ID of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "password",
+              "name": "WorkspaceSubscriptionId"
+            },
+            {
+              "title": "Workspace Resource Group",
+              "description": "Resource Group of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "WorkspaceResourceGroup"
+            },
+            {
+              "title": "Workspace Name",
+              "description": "Workspace name of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "WorkspaceName"
+            }
+          ],
+          "On behalf of User - Delegate Permission": [
+            {
+              "title": "Server URL",
+              "name": "resource",
+              "type": "text",
+              "description": "The service-based URL to which you will connect and perform the automated operations.",
+              "tooltip": "The service-based URL to which you will connect and perform the automated operations.",
+              "placeholder": "https://management.azure.com",
+              "value": "https://management.azure.com",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Tenant ID",
+              "name": "tenant_id",
+              "type": "text",
+              "description": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
+              "tooltip": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Client ID",
+              "name": "client_id",
+              "type": "text",
+              "description": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+              "tooltip": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Client Secret",
+              "name": "client_secret",
+              "type": "password",
+              "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
+              "tooltip": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Authorization Code",
+              "name": "code",
+              "type": "password",
+              "tooltip": "The authorization code that you acquired in the authorization step.",
+              "description": "The authorization code that you acquired during the authorization step. For more information, see the Getting Authorization Code using the Generating the Authorization Code section.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Workspace Subscription ID",
+              "description": "Subscription ID of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "password",
+              "name": "WorkspaceSubscriptionId"
+            },
+            {
+              "title": "Workspace Resource Group",
+              "description": "Resource Group of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "WorkspaceResourceGroup"
+            },
+            {
+              "title": "Workspace Name",
+              "description": "Workspace name of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "WorkspaceName"
+            },
+            {
+              "title": "Redirect URI",
+              "name": "redirect_uri",
+              "type": "text",
+              "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
+              "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal.",
+              "placeholder": "E.g. https://localhost/myapp",
+              "required": false,
+              "editable": true,
+              "visible": true
+            }
+          ]
+        }
       },
       {
         "title": "Verify SSL",
