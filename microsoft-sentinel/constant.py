@@ -1,11 +1,14 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2025 Fortinet Inc
+Copyright (c) 2026 Fortinet Inc
 Copyright end
 """
 
 REFRESH_TOKEN_FLAG = False
+
+AUTH_USING_APP = "Without a User - Application Permission"
+AUTH_BEHALF_OF_USER = "On behalf of User - Delegate Permission"
 
 # API Version
 
