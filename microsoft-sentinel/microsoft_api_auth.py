@@ -5,7 +5,10 @@ Copyright (c) 2026 Fortinet Inc
 Copyright end
 """
 
+import msal, base64
 from requests import request
+from urllib.parse import urljoin
+from integrations.crudhub import make_request
 from time import time, ctime
 from datetime import datetime
 from connectors.core.connector import get_logger, ConnectorError
@@ -21,7 +24,8 @@ class MicrosoftAuth:
         self.client_id = config.get("client_id")
         self.client_secret = config.get("client_secret")
         self.verify_ssl = config.get('verify_ssl')
-        self.scope_application = "https://management.azure.com/.default"
+        self.scope_delegate = "https://management.azure.com/user_impersonation offline_access user.read"
+        self.scope = "https://management.azure.com/.default"
         self.host = config.get("resource")
         if self.host[:7] == "http://":
             self.host = self.host.replace('http://', 'https://')
@@ -40,6 +44,18 @@ class MicrosoftAuth:
                 self.redirect_url = DEFAULT_REDIRECT_URL
             else:
                 self.redirect_url = config.get("redirect_uri")
+        if self.auth_type == CERTIFICATE_BASED_AUTH_TYPE:
+            self.thumbprint = config.get('thumbprint')
+            self.authority = urljoin(AUTH_URL, tenant_id)
+            if isinstance(config.get('private_key', {}), dict) and config.get('private_key', {}).get('@type') == "File":
+                private_key_file_iri = config.get('private_key', {}).get('@id')
+                logger.debug('certificate file iri: {}'.format(private_key_file_iri))
+                self.private_key = self.private_key = make_request(private_key_file_iri, 'GET')
+                try:
+                    # agent machine make_rest call to retrieve file data in encoded format
+                    self.private_key = base64.b64decode(self.private_key, validate=True)
+                except Exception as e:
+                    pass
 
     def convert_ts_epoch(self, ts):
         datetime_object = datetime.strptime(ctime(ts), "%a %b %d %H:%M:%S %Y")
@@ -49,6 +65,8 @@ class MicrosoftAuth:
         try:
             if self.auth_type == AUTH_USING_APP:
                 resp = self.acquire_token_with_client_credentials()
+            elif self.auth_type == CERTIFICATE_BASED_AUTH_TYPE:
+                resp = self.generate_token_using_certificate()
             else:
                 resp = self.acquire_token_on_behalf_of_user(REFRESH_TOKEN_FLAG)
             ts_now = time()
@@ -83,6 +101,23 @@ class MicrosoftAuth:
         else:
             logger.info("Token is valid till {0}".format(expires))
             return "Bearer {0}".format(connector_config.get('accessToken'))
+
+    def generate_token_using_certificate(self):
+        try:
+            app = msal.ConfidentialClientApplication(self.client_id, authority=self.authority,
+                                                     client_credential={"thumbprint": self.thumbprint,
+                                                                        "private_key": self.private_key})
+
+            token_resp = app.acquire_token_for_client(scopes=[self.scope])
+            error_code = token_resp.get('error')
+            if error_code:
+                error_description = token_resp.get('error_description')
+                raise ConnectorError(error_description)
+            return token_resp
+
+        except Exception as err:
+            logger.exception("{0}".format(err))
+            raise ConnectorError("{0}".format(err))
 
     def acquire_token_with_client_credentials(self):
         try:
@@ -119,7 +154,7 @@ class MicrosoftAuth:
                 "client_id": self.client_id,
                 "client_secret": self.client_secret,
                 "redirect_uri": self.redirect_url,
-                "scope": self.scope
+                "scope": self.scope_delegate
             }
 
             if not REFRESH_TOKEN_FLAG:

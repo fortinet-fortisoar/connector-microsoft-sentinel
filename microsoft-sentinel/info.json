@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "description": "Microsoft Sentinel is Cloud-native SIEM for intelligent security analytics for your entire enterprise. These connector connects to Microsoft sentinel using Sentinel APIs to investigate on alerts, threats intelligence indicator, incidents, incident entities, incident relations, incident comments, and incident bookmarks.",
   "publisher": "Fortinet",
-  "cs_approved": false,
+  "cs_approved": true,
   "cs_compatible": true,
   "category": "Analytics and SIEM",
   "icon_small_name": "small.png",
@@ -24,7 +24,8 @@
         "type": "select",
         "options": [
           "Without a User - Application Permission",
-          "On behalf of User - Delegate Permission"
+          "On behalf of User - Delegate Permission",
+          "Certificate Based Authentication"
         ],
         "name": "auth_type",
         "value": "On behalf of User - Delegate Permission",
@@ -192,6 +193,87 @@
               "required": false,
               "editable": true,
               "visible": true
+            }
+          ],
+          "Certificate Based Authentication": [
+            {
+              "title": "Server URL",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "resource",
+              "placeholder": "https://management.azure.com",
+              "value": "https://management.azure.com",
+              "description": "The service-based URL to which you will connect and perform the automated operations.",
+              "tooltip": "The service-based URL to which you will connect and perform the automated operations."
+            },
+            {
+              "title": "Tenant ID",
+              "name": "tenant_id",
+              "type": "text",
+              "description": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
+              "tooltip": "The ID of the tenant that you have been provided for your Azure Active Directory instance.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Client ID",
+              "name": "client_id",
+              "type": "text",
+              "description": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+              "tooltip": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Certificate Thumbprint",
+              "type": "password",
+              "name": "thumbprint",
+              "description": "Provides a thumbprint, fingerprint, or hash, which is a unique identifier generated from a digital certificate using a cryptographic hash function.",
+              "tooltip": "Provides a thumbprint, fingerprint, or hash, which is a unique identifier generated from a digital certificate using a cryptographic hash function.",
+              "required": true,
+              "editable": true,
+              "visible": true
+            },
+            {
+              "title": "Certificate File",
+              "name": "private_key",
+              "type": "file",
+              "tooltip": "Upload a certificate (private key) with one of the following file types: .cer, .pem, .crt",
+              "description": "Upload a certificate (private key) with one of the following file types: .cer, .pem, .crt",
+              "editable": true,
+              "visible": true,
+              "required": true
+            },
+            {
+              "title": "Workspace Subscription ID",
+              "description": "Subscription ID of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "password",
+              "name": "WorkspaceSubscriptionId"
+            },
+            {
+              "title": "Workspace Resource Group",
+              "description": "Resource Group of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "WorkspaceResourceGroup"
+            },
+            {
+              "title": "Workspace Name",
+              "description": "Workspace name of the Microsoft Sentinel that is used to access the Sentinel APIs.",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
+              "name": "WorkspaceName"
             }
           ]
         }

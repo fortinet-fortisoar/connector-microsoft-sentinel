@@ -9,6 +9,7 @@ REFRESH_TOKEN_FLAG = False
 
 AUTH_USING_APP = "Without a User - Application Permission"
 AUTH_BEHALF_OF_USER = "On behalf of User - Delegate Permission"
+CERTIFICATE_BASED_AUTH_TYPE = "Certificate Based Authentication"
 
 # API Version
 
@@ -22,6 +23,7 @@ AUTHORIZATION_CODE = 'authorization_code'
 REFRESH_TOKEN = 'refresh_token'
 
 # endpoints
+AUTH_URL = 'https://login.microsoftonline.com'
 THREAT_INDICATORS_API = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OperationalInsights/workspaces/{2}/providers/Microsoft.SecurityInsights/threatIntelligence/main"
 INCIDENT_API = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OperationalInsights/workspaces/{2}/providers/Microsoft.SecurityInsights/incidents"
 INCIDENT_RELATION_API = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OperationalInsights/workspaces/{2}/providers/Microsoft.SecurityInsights/incidents/{3}/relations"
