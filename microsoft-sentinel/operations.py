@@ -22,8 +22,8 @@ def api_request(method, endpoint, connector_info, config, params=None, data=None
         headers['Authorization'] = token
         headers['Content-Type'] = 'application/json'
         headers['consistencylevel'] = 'eventual'
-        response = request(method, endpoint, headers=headers, params=params, data=data, json=json,
-                           verify=ms.verify_ssl)
+        response = requests.request(method, endpoint, headers=headers, params=params, data=data, json=json,
+                                    verify=ms.verify_ssl)
         if response.status_code in [200, 201, 202, 204]:
             if 'json' in str(response.headers):
                 return response.json()
